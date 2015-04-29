@@ -1,0 +1,24 @@
+BSUIR\IndividualPlanBundle\Entity\Departments:
+    type: entity
+    table: departments
+    oneToMany:
+        professors:
+            targetEntity: Professors
+            mappedBy: professors
+            inversedBy: department
+            joinColumn:
+                id:
+                referencedColumnName: professors
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        faculty:
+            type: integer
+    lifecycleCallbacks: {  }

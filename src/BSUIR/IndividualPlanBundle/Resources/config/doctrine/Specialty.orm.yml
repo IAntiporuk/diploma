@@ -1,0 +1,23 @@
+BSUIR\IndividualPlanBundle\Entity\Specialty:
+    type: entity
+    table: specialty
+    manyToOne:
+        faculty:
+            targetEntity: Faculties
+            cascade: ['persist']
+            mappedBy: specialty
+            inversedBy: faculty
+            joinColumn:
+                name: faculty
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

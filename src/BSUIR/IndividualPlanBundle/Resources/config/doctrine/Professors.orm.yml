@@ -1,0 +1,45 @@
+BSUIR\IndividualPlanBundle\Entity\Professors:
+    type: entity
+    table: professors
+    manyToOne:
+        department:
+            targetEntity: Departments
+            mappedBy: professors
+            inversedBy: department
+            joinColumn:
+                name: department
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        firstName:
+            type: string
+            length: 255
+        secondName:
+            type: string
+            length: 255
+        lastName:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        password:
+            type: string
+            length: 255
+        salt:
+            type: string
+            length: 255
+        academicTitle:
+            type: string
+            length: 255
+        scholasticDegree:
+            type: string
+            length: 255
+        competitionSelected:
+            type: date
+    lifecycleCallbacks: {  }

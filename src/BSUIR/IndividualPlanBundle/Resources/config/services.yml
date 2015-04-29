@@ -1,0 +1,4 @@
+services:
+#    bsuir_individual_plan.example:
+#        class: BSUIR\IndividualPlanBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

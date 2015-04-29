@@ -1,0 +1,3 @@
+bsuir_individual_plan_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: BSUIRIndividualPlanBundle:Default:index }
