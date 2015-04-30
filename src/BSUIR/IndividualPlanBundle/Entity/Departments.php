@@ -21,11 +21,6 @@ class Departments
     private $name;
 
     /**
-     * @var integer
-     */
-    private $faculty;
-
-    /**
      * @var Professors
      */
     private $professors;
@@ -65,28 +60,5 @@ class Departments
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set faculty
-     *
-     * @param integer $faculty
-     * @return Departments
-     */
-    public function setFaculty($faculty)
-    {
-        $this->faculty = $faculty;
-
-        return $this;
-    }
-
-    /**
-     * Get faculty
-     *
-     * @return integer 
-     */
-    public function getFaculty()
-    {
-        return $this->faculty;
     }
 }

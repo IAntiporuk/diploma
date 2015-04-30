@@ -1,3 +1,18 @@
 bsuir_individual_plan_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: BSUIRIndividualPlanBundle:Default:index }
+    path:     /
+    defaults: { _controller: BSUIRIndividualPlanBundle:Dashboard:index }
+
+professors_register:
+    path:     /register
+    defaults: { _controller: BSUIRIndividualPlanBundle:Professors:register }
+
+professors_login:
+    path:     /login
+    defaults: { _controller: BSUIRIndividualPlanBundle:Security:login }
+    methods:  [GET, POST]
+
+professors_login_check:
+    path: /login_check
+
+professors_logout:
+    path: /logout

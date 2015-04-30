@@ -4,8 +4,8 @@ BSUIR\IndividualPlanBundle\Entity\Departments:
     oneToMany:
         professors:
             targetEntity: Professors
-            mappedBy: professors
-            inversedBy: department
+            mappedBy: department
+            inversedBy: professors
             joinColumn:
                 id:
                 referencedColumnName: professors
@@ -19,6 +19,4 @@ BSUIR\IndividualPlanBundle\Entity\Departments:
         name:
             type: string
             length: 255
-        faculty:
-            type: integer
     lifecycleCallbacks: {  }

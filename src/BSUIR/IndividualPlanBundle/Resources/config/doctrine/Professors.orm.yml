@@ -5,7 +5,7 @@ BSUIR\IndividualPlanBundle\Entity\Professors:
         department:
             targetEntity: Departments
             mappedBy: professors
-            inversedBy: department
+            inversedBy: professors
             joinColumn:
                 name: department
                 referencedColumnName: id
@@ -19,12 +19,15 @@ BSUIR\IndividualPlanBundle\Entity\Professors:
         firstName:
             type: string
             length: 255
+            column: first_name
         secondName:
             type: string
             length: 255
+            column: second_name
         lastName:
             type: string
             length: 255
+            column: last_name
         email:
             type: string
             length: 255
@@ -37,9 +40,12 @@ BSUIR\IndividualPlanBundle\Entity\Professors:
         academicTitle:
             type: string
             length: 255
+            column: academic_title
         scholasticDegree:
             type: string
             length: 255
+            column: sholastic_degree
         competitionSelected:
             type: date
+            column: competition_selected
     lifecycleCallbacks: {  }

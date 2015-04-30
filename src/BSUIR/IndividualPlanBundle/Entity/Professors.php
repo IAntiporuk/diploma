@@ -3,11 +3,12 @@
 namespace BSUIR\IndividualPlanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Professors
  */
-class Professors
+class Professors implements UserInterface, \Serializable
 {
     /**
      * @var integer
@@ -63,6 +64,12 @@ class Professors
      * @var integer
      */
     private $department;
+
+    public function __construct()
+    {
+        $this->isActive = true;
+         $this->salt = md5(uniqid(null, true));
+    }
 
     /**
      * @return int
@@ -295,5 +302,41 @@ class Professors
     public function getCompetitionSelected()
     {
         return $this->competitionSelected;
+    }
+
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->email,
+            $this->password,
+             $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->email,
+            $this->password,
+             $this->salt
+            ) = unserialize($serialized);
     }
 }
