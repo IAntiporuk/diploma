@@ -34,8 +34,13 @@
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ url('professors_login') }}">Sign In</a></li>
-                <li><a href="{{ url('professors_register') }}">Sign Up</a></li>
+                {% if app.user %}
+                    <li><p>Welcome, {{ app.user.firstName }} {{ app.user.lastName }}</p></li>
+                    <li><a href="{{ url('professors_logout') }}">Log Out</a></li>
+                {% else %}
+                    <li><a href="{{ url('professors_login') }}">Sign In</a></li>
+                    <li><a href="{{ url('professors_register') }}">Sign Up</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>

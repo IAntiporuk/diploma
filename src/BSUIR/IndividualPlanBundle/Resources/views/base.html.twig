@@ -1,6 +1,10 @@
 {% extends '::base.html.twig' %}
 {% block stylesheets %}
-    {% stylesheets '@BSUIRIndividualPlanBundle/Resources/public/bootstrap/themes/darkly/*.css' filter='cssrewrite' %}
+    {% stylesheets
+    '@BSUIRIndividualPlanBundle/Resources/public/bootstrap/themes/darkly/*.css'
+    '@BSUIRIndividualPlanBundle/Resources/public/css/*'
+    filter='cssrewrite'
+    %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
     {% stylesheets '@BSUIRIndividualPlanBundle/Resources/public/bootstrap/themes/darkly/*.less' %}
