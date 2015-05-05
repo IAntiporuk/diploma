@@ -1,21 +1,37 @@
 {% extends 'BSUIRIndividualPlanBundle::base.html.twig' %}
-{% block title%}Log In{% endblock %}
+{% block title %}Log In{% endblock %}
+{% block h1 %} Log In {% endblock %}
 {% block main_content %}
     <div class="anonymous login">
-        {% if error %}
-            <div>{{ error.message }}</div>
-        {% endif %}
+        <div class="row">
+            <div class="col-lg-6">
+                {% if error %}
+                    <div>{{ error.message }}</div>
+                {% endif %}
 
-        <form action="{{ path('professors_login_check') }}" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="_username" value="{{ last_username }}" />
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="_password" />
-
-            <input type="hidden" name="_target_path" value="account" />
-
-            <input type="submit" name="login" />
-        </form>
+                <form action="{{ path('professors_login_check') }}" method="post" class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="username" class="col-lg-2 control-label">Username:</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" placeholder="Email:"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-lg-2 control-label">Password:</label>
+                            <div class="col-lg-10">
+                                <input type="password" id="password" class="form-control" name="_password" placeholder="Password" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <input type="submit" class="btn btn-primary" name="login" />
+                            </div>
+                        </div>
+                        <input type="hidden" name="_target_path" value="account" />
+                    </fieldset>
+                </form>
+            </div>
+        </div>
     </div>
 {% endblock %}
