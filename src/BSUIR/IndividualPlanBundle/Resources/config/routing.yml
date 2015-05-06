@@ -5,14 +5,15 @@ bsuir_individual_plan_homepage:
 professors_register:
     path:     /register
     defaults: { _controller: BSUIRIndividualPlanBundle:Professors:register }
-
 professors_login:
     path:     /login
     defaults: { _controller: BSUIRIndividualPlanBundle:Security:login }
     methods:  [GET, POST]
-
 professors_login_check:
     path: /login_check
-
 professors_logout:
     path: /logout
+
+individual_plan_index:
+  path:   /individual-plan
+  defaults: { _controller: BSUIRIndividualPlanBundle:IndividualPlan:index }
