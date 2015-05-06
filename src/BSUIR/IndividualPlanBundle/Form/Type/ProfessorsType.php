@@ -20,23 +20,14 @@ class ProfessorsType extends AbstractType
                 'property' => 'name',
             ))
             ->add('email', 'email', array('required' => true))
-            ->add('password', 'repeated', array(
-                    'type' => 'password',
-                    'invalid_message' => 'Password is not confirmed.',
-                    'first_name' => 'password',
-                    'second_name' => 'confirm',
-                    'error_bubbling' => true,
-                    'required' => true
-                )
-            )
             ->add('academicTitle', 'text', array('required' => true))
             ->add('scholasticDegree', 'text', array('required' => true))
             ->add('competitionSelected', 'date', array(
                 'input'  => 'datetime',
                 'widget' => 'choice',
                 'required' => true,
-            ))
-            ->add('sign_up', 'submit');
+            ));
+
         return true;
     }
 
@@ -44,7 +35,7 @@ class ProfessorsType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class'         => 'BSUIR\IndividualPlanBundle\Entity\Professors',
-            'validation_groups'  => array('registration')
+            'validation_groups'  => array('professors')
         ));
     }
 
