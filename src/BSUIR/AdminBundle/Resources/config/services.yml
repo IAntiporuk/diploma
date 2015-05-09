@@ -1,0 +1,4 @@
+services:
+#    bsuir_admin.example:
+#        class: BSUIR\AdminBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

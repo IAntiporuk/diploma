@@ -1,6 +1,6 @@
 <?php
 
-namespace BSUIR\IndividualPlanBundle\Tests\Controller;
+namespace BSUIR\AdminBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
