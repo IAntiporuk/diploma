@@ -2,6 +2,7 @@
 
 namespace BSUIR\IndividualPlanBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,6 +25,14 @@ class Specialty
      */
     private $faculty;
 
+    /**
+     * @var Groups
+     */
+    private $groups;
+
+    public function __construct() {
+        $this->groups = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -80,4 +89,21 @@ class Specialty
     {
         return $this->faculty;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getGroups()
+    {
+        return $this->groups;
+    }
+
+    /**
+     * @param mixed $groups
+     */
+    public function setGroups($groups)
+    {
+        $this->groups = $groups;
+    }
+
 }

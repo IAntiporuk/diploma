@@ -25,8 +25,19 @@ class Departments
      */
     private $professors;
 
+    /**
+     * @var Faculties
+     */
+    private $faculty;
+
+    /**
+     * @var Disciplines
+     */
+    private $disciplines;
+
     public function __construct() {
         $this->professors = new ArrayCollection();
+        $this->disciplines = new ArrayCollection();
     }
 
     /**
@@ -61,4 +72,53 @@ class Departments
     {
         return $this->name;
     }
+
+    /**
+     * @return Faculties
+     */
+    public function getFaculty()
+    {
+        return $this->faculty;
+    }
+
+    /**
+     * @param Faculties $faculty
+     */
+    public function setFaculty($faculty)
+    {
+        $this->faculty = $faculty;
+    }
+
+    /**
+     * @return Professors
+     */
+    public function getProfessors()
+    {
+        return $this->professors;
+    }
+
+    /**
+     * @param Professors $professors
+     */
+    public function setProfessors($professors)
+    {
+        $this->professors = $professors;
+    }
+
+    /**
+     * @return Disciplines
+     */
+    public function getDisciplines()
+    {
+        return $this->disciplines;
+    }
+
+    /**
+     * @param Disciplines $disciplines
+     */
+    public function setDisciplines($disciplines)
+    {
+        $this->disciplines = $disciplines;
+    }
+
 }

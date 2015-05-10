@@ -1,0 +1,23 @@
+BSUIR\IndividualPlanBundle\Entity\Groups:
+    type: entity
+    table: groups
+    manyToOne:
+        specialty:
+            targetEntity: Specialty
+            inversedBy: groups
+            joinTable:
+                name: specialty
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        createdAt:
+            type: datetimetz
+    lifecycleCallbacks: {  }

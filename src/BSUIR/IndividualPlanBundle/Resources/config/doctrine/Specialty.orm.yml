@@ -1,11 +1,18 @@
 BSUIR\IndividualPlanBundle\Entity\Specialty:
     type: entity
     table: specialty
+    oneToMany:
+        groups:
+            targetEntity: Groups
+            mappedBy: specialty
+            inversedBy: null
+            joinColumn:
+                id:
+                referencedColumnName: groups
     manyToOne:
         faculty:
             targetEntity: Faculties
-            cascade: ['persist']
-            mappedBy: specialty
+            mappedBy: null
             inversedBy: faculty
             joinColumn:
                 name: faculty

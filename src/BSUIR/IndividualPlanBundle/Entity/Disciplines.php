@@ -3,12 +3,11 @@
 namespace BSUIR\IndividualPlanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use \Doctrine\Common\Collections\ArrayCollection as ArrayCollection;
 
 /**
- * Faculties
+ * Discplines
  */
-class Faculties
+class Disciplines
 {
     /**
      * @var integer
@@ -21,20 +20,14 @@ class Faculties
     private $name;
 
     /**
-     * @var Specialty
+     * @var \DateTime
      */
-    private $specialty;
+    private $createdAt;
 
     /**
      * @var Departments
      */
-    private $departments;
-
-    public function __construct()
-    {
-        $this->specialty = new ArrayCollection();
-        $this->departments = new ArrayCollection();
-    }
+    private $department;
 
     /**
      * Get id
@@ -50,7 +43,7 @@ class Faculties
      * Set name
      *
      * @param string $name
-     * @return Faculties
+     * @return Disciplines
      */
     public function setName($name)
     {
@@ -70,35 +63,43 @@ class Faculties
     }
 
     /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Disciplines
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
      * @return Departments
      */
-    public function getDepartments()
+    public function getDepartment()
     {
-        return $this->departments;
+        return $this->department;
     }
 
     /**
-     * @param Departments $departments
+     * @param Departments $department
      */
-    public function setDepartments($departments)
+    public function setDepartment($department)
     {
-        $this->departments = $departments;
+        $this->department = $department;
     }
 
-    /**
-     * @return Specialty
-     */
-    public function getSpecialty()
-    {
-        return $this->specialty;
-    }
-
-    /**
-     * @param Specialty $specialty
-     */
-    public function setSpecialty($specialty)
-    {
-        $this->specialty = $specialty;
-    }
 
 }

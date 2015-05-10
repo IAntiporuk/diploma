@@ -1,0 +1,23 @@
+BSUIR\IndividualPlanBundle\Entity\IndividualPlans:
+    type: entity
+    table: individual_plans
+    manyToOne:
+        professor:
+            targetEntity: Professors
+            mappedBy: null
+            inversedBy: individualPlans
+            joinColumn:
+                name: professor
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        createdAt:
+            type: datetimetz
+        session:
+            type: integer
+    lifecycleCallbacks: {  }

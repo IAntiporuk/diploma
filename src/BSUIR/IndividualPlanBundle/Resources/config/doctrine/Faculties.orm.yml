@@ -4,14 +4,18 @@ BSUIR\IndividualPlanBundle\Entity\Faculties:
     oneToMany:
         specialty:
             targetEntity: Specialty
-            cascade: ['persist']
             mappedBy: faculty
-            inversedBy: specialty
+            invercedBy: null
             joinColumn:
                 id:
                 referencedColumnName: faculty
-                onDelete: "CASCADE"
-            orphanRemoval: true
+        departments:
+            targetEntity: Departments
+            mappedBy: faculty
+            invercedBy: null
+            joinColumn:
+                id:
+                referencedColumnName: faculty
     id:
         id:
             type: integer

@@ -3,12 +3,11 @@
 namespace BSUIR\IndividualPlanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use \Doctrine\Common\Collections\ArrayCollection as ArrayCollection;
 
 /**
- * Faculties
+ * Groups
  */
-class Faculties
+class Groups
 {
     /**
      * @var integer
@@ -21,20 +20,15 @@ class Faculties
     private $name;
 
     /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
      * @var Specialty
      */
     private $specialty;
 
-    /**
-     * @var Departments
-     */
-    private $departments;
-
-    public function __construct()
-    {
-        $this->specialty = new ArrayCollection();
-        $this->departments = new ArrayCollection();
-    }
 
     /**
      * Get id
@@ -50,7 +44,7 @@ class Faculties
      * Set name
      *
      * @param string $name
-     * @return Faculties
+     * @return Groups
      */
     public function setName($name)
     {
@@ -70,19 +64,26 @@ class Faculties
     }
 
     /**
-     * @return Departments
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Groups
      */
-    public function getDepartments()
+    public function setCreatedAt($createdAt)
     {
-        return $this->departments;
+        $this->createdAt = $createdAt;
+
+        return $this;
     }
 
     /**
-     * @param Departments $departments
+     * Get createdAt
+     *
+     * @return \DateTime 
      */
-    public function setDepartments($departments)
+    public function getCreatedAt()
     {
-        $this->departments = $departments;
+        return $this->createdAt;
     }
 
     /**

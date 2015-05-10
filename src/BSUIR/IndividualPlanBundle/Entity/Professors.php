@@ -61,18 +61,27 @@ class Professors implements UserInterface, \Serializable
     private $competitionSelected;
 
     /**
-     * @var integer
+     * @var Departments
      */
     private $department;
 
+    /**
+     * @var boolean
+     */
+    private $isHead;
+
+    /**
+     * @var IndividualPlan
+     */
+    private $individualPlans;
+
     public function __construct()
     {
-        $this->isActive = true;
-         $this->salt = md5(uniqid(null, true));
+        $this->salt = md5(uniqid(null, true));
     }
 
     /**
-     * @return int
+     * @return Departments
      */
     public function getDepartment()
     {
@@ -80,7 +89,7 @@ class Professors implements UserInterface, \Serializable
     }
 
     /**
-     * @param int $department
+     * @param Departments $department
      */
     public function setDepartment($department)
     {
@@ -302,6 +311,38 @@ class Professors implements UserInterface, \Serializable
     public function getCompetitionSelected()
     {
         return $this->competitionSelected;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIsHead()
+    {
+        return $this->isHead;
+    }
+
+    /**
+     * @param boolean $isHead
+     */
+    public function setIsHead($isHead)
+    {
+        $this->isHead = $isHead;
+    }
+
+    /**
+     * @return IndividualPlan
+     */
+    public function getIndividualPlans()
+    {
+        return $this->individualPlans;
+    }
+
+    /**
+     * @param IndividualPlan $individualPlans
+     */
+    public function setIndividualPlans($individualPlans)
+    {
+        $this->individualPlans = $individualPlans;
     }
 
     public function getUsername()

@@ -1,10 +1,18 @@
 BSUIR\IndividualPlanBundle\Entity\Professors:
     type: entity
     table: professors
+    oneToMany:
+        individualPlans:
+            targetEntity: IndividualPlans
+            mappedBy: professor
+            inversedBy: null
+            joinColumn:
+                id:
+                referencedColumnName: professor
     manyToOne:
         department:
             targetEntity: Departments
-            mappedBy: professors
+            mappedBy: null
             inversedBy: professors
             joinColumn:
                 name: department
@@ -48,4 +56,7 @@ BSUIR\IndividualPlanBundle\Entity\Professors:
         competitionSelected:
             type: date
             column: competition_selected
+        isHead:
+            type: boolean
+            column: is_head
     lifecycleCallbacks: {  }

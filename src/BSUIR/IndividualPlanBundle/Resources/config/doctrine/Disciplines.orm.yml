@@ -1,0 +1,24 @@
+BSUIR\IndividualPlanBundle\Entity\Disciplines:
+    type: entity
+    table: disciplines
+    manyToOne:
+        department:
+            targetEntity: Departments
+            cascade: ['persist']
+            inversedBy: disciplines
+            joinColumn:
+                name: department
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        createdAt:
+            type: datetimetz
+    lifecycleCallbacks: {  }

@@ -5,10 +5,25 @@ BSUIR\IndividualPlanBundle\Entity\Departments:
         professors:
             targetEntity: Professors
             mappedBy: department
-            inversedBy: professors
+            inversedBy: null
             joinColumn:
                 id:
                 referencedColumnName: professors
+        disciplines:
+            targetEntity: Disciplines
+            mappedBy: department
+            inversedBy: null
+            joinColumn:
+                id:
+                referencedColumnName: disciplines
+    manyToOne:
+        faculty:
+            targetEntity: Faculties
+            mappedBy: null
+            inversedBy: departments
+            joinColumn:
+                name: faculty
+                referencedColumnName: id
     id:
         id:
             type: integer
