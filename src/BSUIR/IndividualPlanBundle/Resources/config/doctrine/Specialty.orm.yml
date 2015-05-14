@@ -13,7 +13,7 @@ BSUIR\IndividualPlanBundle\Entity\Specialty:
         faculty:
             targetEntity: Faculties
             mappedBy: null
-            inversedBy: faculty
+            inversedBy: specialty
             joinColumn:
                 name: faculty
                 referencedColumnName: id

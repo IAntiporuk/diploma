@@ -26,7 +26,8 @@ class ProfessorsType extends AbstractType
                 'input'  => 'datetime',
                 'widget' => 'choice',
                 'required' => true,
-            ));
+            ))
+            ->add('isHead', 'checkbox');
 
         return true;
     }

@@ -13,9 +13,6 @@ class ProfessorsController extends Controller
 {
     /**
      * registration form
-     *
-     * @Route("/register", name="professors_register")
-     * @Method({"GET","POST"})
      */
     public function registerAction(Request $request)
     {

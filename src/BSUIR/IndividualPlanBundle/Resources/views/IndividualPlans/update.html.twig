@@ -1,0 +1,78 @@
+{% extends 'BSUIRIndividualPlanBundle::base.html.twig' %}
+{% block title %}Редактировать Индивидуальный План{% endblock %}
+{% block h1 %}Редактировать Индивидуальный План{% endblock %}
+{% block main_content %}
+    <div class="row">
+        <div class="col-lg-6">
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+            <fieldset>
+                <div class="form-group">
+                    {{ form_label(form.session, null, {'label_attr': {'class': 'col-lg-3 control-label'}}) }}
+                    <div class="col-lg-9">
+                        {{ form_widget(form.session, {'attr': {'class': 'form-control'}}) }}
+                        <span class="error">{{ form_errors(form.session) }}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12 col-lg-offset-3">
+                        {{ form_widget(form.create, {'attr': {'class': 'btn btn-primary'}, 'label': 'Обновить'}) }}
+                    </div>
+                </div>
+            </fieldset>
+            {{ form_widget(form._token) }}
+            {{ form_end(form) }}
+        </div>
+        <div class="col-lg-6">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Учебная Работа(План)</h3>
+                </div>
+                <div class="panel-body">
+                    <a href="" class="btn btn-success">Создать</a>
+                    <a href="" class="btn btn-warning">Изменить</a>
+                    <a href="" class="btn btn-danger">Удалить</a>
+                </div>
+            </div>
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Учебная Работа(Выполнение)</h3>
+                </div>
+                <div class="panel-body">
+                    <a href="" class="btn btn-success">Создать</a>
+                    <a href="" class="btn btn-warning">Изменить</a>
+                    <a href="" class="btn btn-danger">Удалить</a>
+                </div>
+            </div>
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Учебно-методическая и Организационно-методическая Работа</h3>
+                </div>
+                <div class="panel-body">
+                    <a href="" class="btn btn-success">Создать</a>
+                    <a href="" class="btn btn-warning">Изменить</a>
+                    <a href="" class="btn btn-danger">Удалить</a>
+                </div>
+            </div>
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Научно-исследовательская Работа</h3>
+                </div>
+                <div class="panel-body">
+                    <a href="" class="btn btn-success">Создать</a>
+                    <a href="" class="btn btn-warning">Изменить</a>
+                    <a href="" class="btn btn-danger">Удалить</a>
+                </div>
+            </div>
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Участие в работе советов, комиссий, комитетов, руководство НИРС, работа в студенческих группах и др.</h3>
+                </div>
+                <div class="panel-body">
+                    <a href="" class="btn btn-success">Создать</a>
+                    <a href="" class="btn btn-warning">Изменить</a>
+                    <a href="" class="btn btn-danger">Удалить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

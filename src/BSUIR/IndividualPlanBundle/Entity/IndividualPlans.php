@@ -20,6 +20,11 @@ class IndividualPlans
     private $createdAt;
 
     /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
      * @var integer
      */
     private $session;
@@ -102,5 +107,30 @@ class IndividualPlans
         $this->professor = $professor;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param mixed $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    public function prePersist()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    public function preUpdate()
+    {
+        $this->updatedAt = new \DateTime();
+    }
 
 }

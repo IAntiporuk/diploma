@@ -1,5 +1,6 @@
 BSUIR\IndividualPlanBundle\Entity\IndividualPlans:
     type: entity
+    repositoryClass: BSUIR\IndividualPlanBundle\Repository\IndividualPlans
     table: individual_plans
     manyToOne:
         professor:
@@ -18,6 +19,10 @@ BSUIR\IndividualPlanBundle\Entity\IndividualPlans:
     fields:
         createdAt:
             type: datetimetz
+        updatedAt:
+            type: datetimetz
         session:
             type: integer
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+        prePersist: [ prePersist, preUpdate ]
+        preUpdate: [ preUpdate ]

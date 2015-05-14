@@ -16,4 +16,21 @@ professors_logout:
 
 individual_plan_index:
   path:   /individual-plan
-  defaults: { _controller: BSUIRIndividualPlanBundle:IndividualPlan:index }
+  defaults: { _controller: BSUIRIndividualPlanBundle:IndividualPlans:index }
+  methods:  [GET, POST]
+individual_plan_create:
+  path:   /individual-plan/create
+  defaults: { _controller: BSUIRIndividualPlanBundle:IndividualPlans:create }
+  methods:  [GET, POST]
+individual_plan_update:
+  path:   /individual-plan/update/{ip_id}
+  defaults: { _controller: BSUIRIndividualPlanBundle:IndividualPlans:update }
+  methods:  [GET, POST]
+  requirements:
+      ip_id: \d+
+individual_plan_remove:
+  path:   /individual-plan/remove/{ip_id}
+  defaults: { _controller: BSUIRIndividualPlanBundle:IndividualPlans:remove }
+  methods:  [GET]
+  requirements:
+      ip_id: \d+

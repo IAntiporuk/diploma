@@ -1,4 +1,4 @@
-.navbar-nav li p {   padding-top: 19.5px; padding-bottom: 19.5px; margin: 0; }
+.navbar-nav li p { padding: 19.5px 15px; margin: 0; }
 
 .date-form-control select {
     display: block;
@@ -21,3 +21,5 @@
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 .date-form-control select:last-child { margin-right: 0; }
+
+table.table .btn { padding: 0 15px; }
