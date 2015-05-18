@@ -90,9 +90,10 @@ class IndividualPlansController extends BaseController
             }
         }
 
-        return $this->render('BSUIRIndividualPlanBundle:IndividualPlans:update.html.twig',
-            array('form' => $form->createView())
-        );
+        return $this->render('BSUIRIndividualPlanBundle:IndividualPlans:update.html.twig', array(
+            'form' => $form->createView(),
+            'plan' => $individualPlan,
+        ));
     }
 
     /**

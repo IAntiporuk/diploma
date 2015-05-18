@@ -34,6 +34,15 @@ class IndividualPlans
      */
     private $professor;
 
+    /**
+     * @var EducationalMethodicalWork
+     */
+    private $educationalMethodicalWork;
+
+    /**
+     * @var ScientificWork
+     */
+    private $scientificWork;
 
     /**
      * Get id
@@ -123,11 +132,49 @@ class IndividualPlans
         $this->updatedAt = $updatedAt;
     }
 
+    /**
+     * @return EducationalMethodicalWork
+     */
+    public function getEducationalMethodicalWork()
+    {
+        return $this->educationalMethodicalWork;
+    }
+
+    /**
+     * @param EducationalMethodicalWork $educationalMethodicalWork
+     */
+    public function setEducationalMethodicalWork($educationalMethodicalWork)
+    {
+        $this->educationalMethodicalWork = $educationalMethodicalWork;
+    }
+
+    /**
+     * @return ScientificWork
+     */
+    public function getScientificWork()
+    {
+        return $this->scientificWork;
+    }
+
+    /**
+     * @param ScientificWork $scientificWork
+     */
+    public function setScientificWork($scientificWork)
+    {
+        $this->scientificWork = $scientificWork;
+    }
+
+    /**
+     * LifecycleCallbacks
+     */
     public function prePersist()
     {
         $this->createdAt = new \DateTime();
     }
 
+    /**
+     * LifecycleCallbacks
+     */
     public function preUpdate()
     {
         $this->updatedAt = new \DateTime();

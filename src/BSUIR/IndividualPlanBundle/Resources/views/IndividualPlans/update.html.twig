@@ -21,6 +21,11 @@
             </fieldset>
             {{ form_widget(form._token) }}
             {{ form_end(form) }}
+
+            <div class="progress progress-striped active">
+                <div class="progress-bar" style="width: 20%"></div>
+            </div>
+            <a href="{{ url('individual_plan_print', {ip_id: plan.id}) }}" disabled class="btn btn-success btn-lg btn-block">Распечатать Индивидуальный План</a>
         </div>
         <div class="col-lg-6">
             <div class="panel panel-danger">
@@ -43,24 +48,32 @@
                     <a href="" class="btn btn-danger">Удалить</a>
                 </div>
             </div>
-            <div class="panel panel-danger">
+            {% set emw = plan.educationalMethodicalWork %}
+            <div class="panel panel-{% if emw %}success{% else %}danger{% endif %}">
                 <div class="panel-heading">
                     <h3 class="panel-title">Учебно-методическая и Организационно-методическая Работа</h3>
                 </div>
                 <div class="panel-body">
-                    <a href="" class="btn btn-success">Создать</a>
-                    <a href="" class="btn btn-warning">Изменить</a>
-                    <a href="" class="btn btn-danger">Удалить</a>
+                    {% if emw %}
+                        <a href="{{ url('educational_methodical_work_update', {emw_id: emw.id}) }}" class="btn btn-warning">Просмотреть</a>
+                        <a href="{{ url('educational_methodical_work_remove', {emw_id: emw.id}) }}" class="btn btn-danger">Удалить</a>
+                    {% else %}
+                        <a href="{{ url('educational_methodical_work_create', {ip_id: plan.id}) }}" class="btn btn-success">Создать</a>
+                    {% endif %}
                 </div>
             </div>
-            <div class="panel panel-danger">
+            {% set sw = plan.scientificWork %}
+            <div class="panel panel-{% if sw %}success{% else %}danger{% endif %}">
                 <div class="panel-heading">
                     <h3 class="panel-title">Научно-исследовательская Работа</h3>
                 </div>
                 <div class="panel-body">
-                    <a href="" class="btn btn-success">Создать</a>
-                    <a href="" class="btn btn-warning">Изменить</a>
-                    <a href="" class="btn btn-danger">Удалить</a>
+                    {% if sw %}
+                        <a href="{{ url('scientific_work_update', {sw_id: sw.id}) }}" class="btn btn-warning">Просмотреть</a>
+                        <a href="{{ url('scientific_work_remove', {sw_id: sw.id}) }}" class="btn btn-danger">Удалить</a>
+                    {% else %}
+                        <a href="{{ url('scientific_work_create', {ip_id: plan.id}) }}" class="btn btn-success">Создать</a>
+                    {% endif %}
                 </div>
             </div>
             <div class="panel panel-danger">

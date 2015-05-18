@@ -15,22 +15,110 @@ professors_logout:
     path: /logout
 
 individual_plan_index:
-  path:   /individual-plan
-  defaults: { _controller: BSUIRIndividualPlanBundle:IndividualPlans:index }
-  methods:  [GET, POST]
+    path:   /individual-plan
+    defaults: { _controller: BSUIRIndividualPlanBundle:IndividualPlans:index }
+    methods:  [GET, POST]
 individual_plan_create:
-  path:   /individual-plan/create
-  defaults: { _controller: BSUIRIndividualPlanBundle:IndividualPlans:create }
-  methods:  [GET, POST]
+    path:   /individual-plan/create
+    defaults: { _controller: BSUIRIndividualPlanBundle:IndividualPlans:create }
+    methods:  [GET, POST]
 individual_plan_update:
-  path:   /individual-plan/update/{ip_id}
-  defaults: { _controller: BSUIRIndividualPlanBundle:IndividualPlans:update }
-  methods:  [GET, POST]
-  requirements:
-      ip_id: \d+
+    path:   /individual-plan/update/{ip_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:IndividualPlans:update }
+    methods:  [GET, POST]
+    requirements:
+        ip_id: \d+
 individual_plan_remove:
-  path:   /individual-plan/remove/{ip_id}
-  defaults: { _controller: BSUIRIndividualPlanBundle:IndividualPlans:remove }
-  methods:  [GET]
-  requirements:
-      ip_id: \d+
+    path:   /individual-plan/remove/{ip_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:IndividualPlans:remove }
+    methods:  [GET]
+    requirements:
+        ip_id: \d+
+individual_plan_print:
+    path:   /individual-plan/print/{ip_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:IndividualPlans:print }
+    methods:  [GET]
+    requirements:
+        ip_id: \d+
+
+educational_methodical_work_index:
+    path: /educational-methodical-work
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationalMethodicalWork:index }
+educational_methodical_work_create:
+    path: /educational-methodical-work/create/{ip_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationalMethodicalWork:create }
+    methods:  [GET, POST]
+    requirements:
+        ip_id: \d+
+educational_methodical_work_update:
+    path: /educational-methodical-work/update/{emw_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationalMethodicalWork:update }
+    methods:  [GET, POST]
+    requirements:
+        emw_id: \d+
+educational_methodical_work_remove:
+    path: /educational-methodical-work/remove/{emw_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationalMethodicalWork:remove }
+    methods:  [GET]
+    requirements:
+        emw_id: \d+
+
+educational_methodical_items_create:
+    path: /educational-methodical-items/create/{emw_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationalMethodicalItems:create }
+    methods:  [GET, POST]
+    requirements:
+        emw_id: \d+
+educational_methodical_items_update:
+    path: /educational-methodical-items/update/{emi_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationalMethodicalItems:update }
+    methods:  [GET, POST]
+    requirements:
+        emi_id: \d+
+educational_methodical_items_remove:
+    path: /educational-methodical-items/remove/{emi_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationalMethodicalItems:remove }
+    methods:  [GET]
+    requirements:
+        emi_id: \d+
+        
+scientific_work_index:
+    path: /scientific-work
+    defaults: { _controller: BSUIRIndividualPlanBundle:ScientificWork:index }
+scientific_work_create:
+    path: /scientific-work/create/{ip_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:ScientificWork:create }
+    methods:  [GET, POST]
+    requirements:
+        ip_id: \d+
+scientific_work_update:
+    path: /scientific-work/update/{sw_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:ScientificWork:update }
+    methods:  [GET, POST]
+    requirements:
+        sw_id: \d+
+scientific_work_remove:
+    path: /scientific-work/remove/{sw_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:ScientificWork:remove }
+    methods:  [GET]
+    requirements:
+        sw_id: \d+
+        
+scientific_items_create:
+    path: /scientific-items/create/{sw_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:ScientificItems:create }
+    methods:  [GET, POST]
+    requirements:
+        sw_id: \d+
+scientific_items_update:
+    path: /scientific-items/update/{si_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:ScientificItems:update }
+    methods:  [GET, POST]
+    requirements:
+        si_id: \d+
+scientific_items_remove:
+    path: /scientific-items/remove/{si_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:ScientificItems:remove }
+    methods:  [GET]
+    requirements:
+        si_id: \d+

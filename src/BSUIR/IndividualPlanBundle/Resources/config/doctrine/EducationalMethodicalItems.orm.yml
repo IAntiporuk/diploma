@@ -1,0 +1,39 @@
+BSUIR\IndividualPlanBundle\Entity\EducationalMethodicalItems:
+    type: entity
+    table: educational_methodical_items
+    repositoryClass: BSUIR\IndividualPlanBundle\Repository\EducationalMethodicalItems
+    manyToOne:
+        educationalMethodicalWork:
+            targetEntity: EducationalMethodicalWork
+            mappedBy: null
+            inversedBy: educationalMethodicalItems
+            joinColumn:
+                name: educational_methodical_work
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        workName:
+            type: string
+            length: 255
+        startedAt:
+            type: datetime
+        finishedAt:
+            type: datetime
+        markFirst:
+            type: integer
+        markSecond:
+            type: integer
+        note:
+            type: text
+        createdAt:
+            type: datetime
+        updatedAt:
+            type: datetime
+    lifecycleCallbacks:
+        prePersist: [ prePersist, preUpdate ]
+        preUpdate: [ preUpdate ]

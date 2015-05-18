@@ -27,7 +27,9 @@ class ProfessorsType extends AbstractType
                 'widget' => 'choice',
                 'required' => true,
             ))
-            ->add('isHead', 'checkbox');
+            ->add('isHead', 'checkbox', array(
+                'required' => false,
+            ));
 
         return true;
     }

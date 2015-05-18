@@ -2,6 +2,25 @@ BSUIR\IndividualPlanBundle\Entity\IndividualPlans:
     type: entity
     repositoryClass: BSUIR\IndividualPlanBundle\Repository\IndividualPlans
     table: individual_plans
+    oneToOne:
+        educationalMethodicalWork:
+            targetEntity: EducationalMethodicalWork
+            mappedBy: null
+            cascade: ['remove']
+            inversedBy: individualPlan
+            joinColumn:
+                name: educational_methodical_work
+                referencedColumnName: id
+                onDelete: SET NULL
+        scientificWork:
+            targetEntity: ScientificWork
+            mappedBy: null
+            cascade: ['remove']
+            inversedBy: individualPlan
+            joinColumn:
+                name: scientific_work
+                referencedColumnName: id
+                onDelete: SET NULL
     manyToOne:
         professor:
             targetEntity: Professors

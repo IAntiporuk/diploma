@@ -10,6 +10,9 @@ class BaseController extends Controller
         return $this->getDoctrine()->getRepository($repository);
     }
 
+    /**
+     * @return \Doctrine\ORM\EntityManager
+     */
     public function getManager() {
         return $this->getDoctrine()->getManager();
     }

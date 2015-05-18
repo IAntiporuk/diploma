@@ -1,0 +1,29 @@
+BSUIR\IndividualPlanBundle\Entity\EducationalMethodicalWork:
+    type: entity
+    table: educational_methodical_work
+    repositoryClass: BSUIR\IndividualPlanBundle\Repository\EducationalMethodicalWork
+    oneToOne:
+        individualPlan:
+            targetEntity: IndividualPlans
+            mappedBy: educationalMethodicalWork
+    oneToMany:
+        educationalMethodicalItems:
+            targetEntity: EducationalMethodicalItems
+            cascade: ['remove']
+            mappedBy: educationalMethodicalWork
+            inversedBy: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        createdAt:
+            type: datetime
+        updatedAt:
+            type: datetime
+    lifecycleCallbacks:
+        prePersist: [ prePersist, preUpdate ]
+        preUpdate: [ preUpdate ]
+
