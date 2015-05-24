@@ -61,7 +61,7 @@ class ScientificItemsController extends BaseController
         $scItemId = (int) $request->get('si_id');
 
         /** @var \BSUIR\IndividualPlanBundle\Repository\ScientificItems $scItemsRep */
-        $scItemsRep = $this->getRepository('BSUIRIndividualPlanBundle:EducationalMethodicalItems');
+        $scItemsRep = $this->getRepository('BSUIRIndividualPlanBundle:ScientificItems');
         $scItem = $scItemsRep->findOneByIdAndProfessor($scItemId, $professor);
 
         if (null === $scItem) {

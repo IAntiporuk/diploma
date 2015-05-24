@@ -145,4 +145,35 @@ class ScientificWorkController extends BaseController
             'ip_id' => $individualPlanId,
         )));
     }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function printAction(Request $request)
+    {
+        $professor = $this->getUser();
+        $scWorkId = (int) $request->get('sw_id');
+
+        /** @var \BSUIR\IndividualPlanBundle\Repository\ScientificWork $scWorkRep */
+        $scWorkRep = $this->getRepository('BSUIRIndividualPlanBundle:ScientificWork');
+        /** @var ScientificWork $sw */
+        $scWork = $scWorkRep->findOneByIdAndProfessor($scWorkId, $professor);
+
+        if (null === $scWork) {
+            //TODO: set error message
+            return $this->redirect($this->generateUrl('individual_plan_index'));
+        }
+
+        $scItems = $this
+            ->getRepository('BSUIRIndividualPlanBundle:ScientificItems')
+            ->findBy(array(
+                'scientificWork' => $scWork->getId(),
+            ));
+
+        return $this->render('BSUIRIndividualPlanBundle:ScientificWork:print.html.twig', array(
+            'scWork' => $scWork,
+            'scItems' => $scItems,
+        ));
+    }
 }

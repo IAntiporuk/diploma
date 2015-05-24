@@ -45,6 +45,11 @@ class IndividualPlans
     private $scientificWork;
 
     /**
+     * @var OtherWork
+     */
+    private $otherWork;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -165,6 +170,22 @@ class IndividualPlans
     }
 
     /**
+     * @return OtherWork
+     */
+    public function getOtherWork()
+    {
+        return $this->otherWork;
+    }
+
+    /**
+     * @param OtherWork $otherWork
+     */
+    public function setOtherWork($otherWork)
+    {
+        $this->otherWork = $otherWork;
+    }
+
+    /**
      * LifecycleCallbacks
      */
     public function prePersist()
@@ -179,5 +200,4 @@ class IndividualPlans
     {
         $this->updatedAt = new \DateTime();
     }
-
 }

@@ -1,10 +1,19 @@
 {% extends 'BSUIRIndividualPlanBundle::base.html.twig' %}
-{% block title %}Изменить Учебно-методическая и Организационно-методическая Работа{% endblock %}
-{% block h1 %}Изменить Учебно-методическая и Организационно-методическая Работа{% endblock %}
+{% block title %}Изменить Учебно-методическую и Организационно-методическую Работу{% endblock %}
+{% block h1 %}Изменить Учебно-методическую и Организационно-методическую Работу{% endblock %}
 {% block main_content %}
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
+            {% if emi %}
+                <p><a href="{{ url('educational_methodical_work_print', {emw_id: emw.id}) }}" class="btn btn-default btn-lg btn-block" target="_blank">Распечатать План</a></p>
+            {% endif %}
+        </div>
+        <div class="col-lg-6">
             <p><a href="{{ url('educational_methodical_items_create', {emw_id: emw.id}) }}" class="btn btn-primary btn-lg btn-block">Создать запись</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <h3 class="panel-title">Созданные Записи</h3>

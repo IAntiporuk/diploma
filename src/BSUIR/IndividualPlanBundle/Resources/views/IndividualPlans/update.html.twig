@@ -55,6 +55,9 @@
                 </div>
                 <div class="panel-body">
                     {% if emw %}
+                        {% if emw.educationalMethodicalItems.count %}
+                            <a href="{{ url('educational_methodical_work_print', {emw_id: emw.id}) }}" target="_blank" class="btn btn-success">Печать</a>
+                        {% endif %}
                         <a href="{{ url('educational_methodical_work_update', {emw_id: emw.id}) }}" class="btn btn-warning">Просмотреть</a>
                         <a href="{{ url('educational_methodical_work_remove', {emw_id: emw.id}) }}" class="btn btn-danger">Удалить</a>
                     {% else %}
@@ -69,6 +72,9 @@
                 </div>
                 <div class="panel-body">
                     {% if sw %}
+                        {% if sw.scientificItems.count %}
+                            <a href="{{ url('scientific_work_print', {sw_id: sw.id}) }}" target="_blank" class="btn btn-success">Печать</a>
+                        {% endif %}
                         <a href="{{ url('scientific_work_update', {sw_id: sw.id}) }}" class="btn btn-warning">Просмотреть</a>
                         <a href="{{ url('scientific_work_remove', {sw_id: sw.id}) }}" class="btn btn-danger">Удалить</a>
                     {% else %}
@@ -76,14 +82,21 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="panel panel-danger">
+            {% set ow = plan.otherWork %}
+            <div class="panel panel-{% if ow %}success{% else %}danger{% endif %}">
                 <div class="panel-heading">
                     <h3 class="panel-title">Участие в работе советов, комиссий, комитетов, руководство НИРС, работа в студенческих группах и др.</h3>
                 </div>
                 <div class="panel-body">
-                    <a href="" class="btn btn-success">Создать</a>
-                    <a href="" class="btn btn-warning">Изменить</a>
-                    <a href="" class="btn btn-danger">Удалить</a>
+                    {% if ow %}
+                        {% if ow.otherItems.count %}
+                            <a href="{{ url('other_work_print', {ow_id: ow.id}) }}" target="_blank" class="btn btn-success">Печать</a>
+                        {% endif %}
+                        <a href="{{ url('other_work_update', {ow_id: ow.id}) }}" class="btn btn-warning">Просмотреть</a>
+                        <a href="{{ url('other_work_remove', {ow_id: ow.id}) }}" class="btn btn-danger">Удалить</a>
+                    {% else %}
+                        <a href="{{ url('other_work_create', {ip_id: plan.id}) }}" class="btn btn-success">Создать</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

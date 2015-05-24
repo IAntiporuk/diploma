@@ -1,0 +1,32 @@
+BSUIR\IndividualPlanBundle\Entity\OtherItems:
+    type: entity
+    table: other_items
+    repositoryClass: BSUIR\IndividualPlanBundle\Repository\OtherItems
+    manyToOne:
+        otherWork:
+            targetEntity: OtherWork
+            mappedBy: null
+            inversedBy: otherItems
+            joinColumn:
+                name: other_work
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        work:
+            type: string
+            length: 255
+        mark:
+            type: integer
+        createdAt:
+            type: datetime
+        updatedAt:
+            type: datetime
+    lifecycleCallbacks:
+        prePersist: [ prePersist, preUpdate ]
+        preUpdate: [ preUpdate ]
+

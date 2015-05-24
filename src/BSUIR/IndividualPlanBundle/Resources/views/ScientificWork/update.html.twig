@@ -1,7 +1,17 @@
 {% extends 'BSUIRIndividualPlanBundle::base.html.twig' %}
-{% block title %}Изменить Учебно-методическая и Организационно-методическая Работа{% endblock %}
-{% block h1 %}Изменить Учебно-методическая и Организационно-методическая Работа{% endblock %}
+{% block title %}Изменить Научно-исследовательскую Работу{% endblock %}
+{% block h1 %}Изменить Научно-исследовательскую Работу{% endblock %}
 {% block main_content %}
+    <div class="row">
+        <div class="col-lg-4">
+            {% if scItems %}
+                <p><a href="{{ url('scientific_work_print', {sw_id: scWork.id}) }}" class="btn btn-default btn-lg btn-block" target="_blank">Распечатать План</a></p>
+            {% endif %}
+        </div>
+        <div class="col-lg-8">
+            <p><a href="{{ url('scientific_items_create', {sw_id: scWork.id}) }}" class="btn btn-primary btn-lg btn-block">Создать запись</a></p>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-4">
             {{ form_start(form, {'attr' : { 'class' : 'form-horizontal' }}) }}
@@ -30,7 +40,6 @@
             {{ form(form) }}
         </div>
         <div class="col-lg-8">
-            <p><a href="{{ url('scientific_items_create', {sw_id: scWork.id}) }}" class="btn btn-primary btn-lg btn-block">Создать запись</a></p>
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <h3 class="panel-title">Созданные Записи</h3>

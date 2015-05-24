@@ -115,4 +115,34 @@ class EducationalMethodicalWorkController extends BaseController
             'ip_id' => $individualPlanId,
         )));
     }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function printAction(Request $request)
+    {
+        $professor = $this->getUser();
+
+        /** @var \BSUIR\IndividualPlanBundle\Repository\EducationalMethodicalWork $eduMethWorkRep */
+        $eduMethWorkRep = $this->getRepository('BSUIRIndividualPlanBundle:EducationalMethodicalWork');
+        /** @var EducationalMethodicalWork $eduMethWork */
+        $eduMethWork = $eduMethWorkRep->findOneByIdAndProfessor($request->get('emw_id'), $professor);
+
+        if (null === $eduMethWork) {
+            //TODO: set error message
+            return $this->redirect($this->generateUrl('individual_plan_index'));
+        }
+
+        $eduMethItems = $this
+            ->getRepository('BSUIRIndividualPlanBundle:EducationalMethodicalItems')
+            ->findBy(array(
+                'educationalMethodicalWork' => $eduMethWork->getId(),
+            ));
+
+        return $this->render('BSUIRIndividualPlanBundle:EducationalMethodicalWork:print.html.twig', array(
+            'emw' => $eduMethWork,
+            'emi' => $eduMethItems,
+        ));
+    }
 }

@@ -1,0 +1,5 @@
+.print h1 { width: 70%; margin: 10px auto; font-size: 18px; text-align: center; }
+.print table { width: 100%; border: 2px solid black; border-collapse: collapse; }
+.print th { text-align: center; padding: 5px; border: 2px solid black; }
+.print td { padding: 5px; border: 1px solid black; border-left: 2px solid; border-right: 2px solid; }
+.print .common-field { margin: 0 20px 20px; font-size: 18px}

@@ -21,6 +21,15 @@ BSUIR\IndividualPlanBundle\Entity\IndividualPlans:
                 name: scientific_work
                 referencedColumnName: id
                 onDelete: SET NULL
+        otherWork:
+            targetEntity: OtherWork
+            mappedBy: null
+            cascade: ['remove']
+            inversedBy: individualPlan
+            joinColumn:
+                name: other_work
+                referencedColumnName: id
+                onDelete: SET NULL
     manyToOne:
         professor:
             targetEntity: Professors

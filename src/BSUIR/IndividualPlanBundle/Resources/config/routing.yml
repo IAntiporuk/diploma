@@ -62,6 +62,12 @@ educational_methodical_work_remove:
     methods:  [GET]
     requirements:
         emw_id: \d+
+educational_methodical_work_print:
+    path: /educational-methodical-work/print/{emw_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationalMethodicalWork:print }
+    methods:  [GET]
+    requirements:
+        emw_id: \d+
 
 educational_methodical_items_create:
     path: /educational-methodical-items/create/{emw_id}
@@ -103,6 +109,12 @@ scientific_work_remove:
     methods:  [GET]
     requirements:
         sw_id: \d+
+scientific_work_print:
+    path: /scientific-work/print/{sw_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:ScientificWork:print }
+    methods:  [GET]
+    requirements:
+        sw_id: \d+
         
 scientific_items_create:
     path: /scientific-items/create/{sw_id}
@@ -122,3 +134,50 @@ scientific_items_remove:
     methods:  [GET]
     requirements:
         si_id: \d+
+
+other_work_index:
+    path: /other-work
+    defaults: { _controller: BSUIRIndividualPlanBundle:OtherWork:index }
+other_work_create:
+    path: /other-work/create/{ip_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:OtherWork:create }
+    methods:  [GET, POST]
+    requirements:
+        ip_id: \d+
+other_work_update:
+    path: /other-work/update/{ow_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:OtherWork:update }
+    methods:  [GET, POST]
+    requirements:
+        ow_id: \d+
+other_work_remove:
+    path: /other-work/remove/{ow_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:OtherWork:remove }
+    methods:  [GET]
+    requirements:
+        ow_id: \d+
+other_work_print:
+    path: /other-work/print/{ow_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:OtherWork:print }
+    methods:  [GET, POST]
+    requirements:
+        ow_id: \d+
+        
+other_items_create:
+    path: /other-items/create/{ow_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:OtherItems:create }
+    methods:  [GET, POST]
+    requirements:
+        ow_id: \d+
+other_items_update:
+    path: /other-items/update/{oi_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:OtherItems:update }
+    methods:  [GET, POST]
+    requirements:
+        oi_id: \d+
+other_items_remove:
+    path: /other-items/remove/{oi_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:OtherItems:remove }
+    methods:  [GET]
+    requirements:
+        oi_id: \d+

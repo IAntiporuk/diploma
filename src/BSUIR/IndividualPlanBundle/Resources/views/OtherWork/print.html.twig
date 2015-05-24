@@ -1,0 +1,27 @@
+{% extends 'BSUIRIndividualPlanBundle::base-print.html.twig' %}
+{% block title %}Печать{% endblock %}
+{% block print_content %}
+    {% if otherItems %}
+        <h1>Участие в работе советов, комиссий, комитетов, руководство НИРС, работа в студенческих группах и др.</h1>
+        <table>
+            <thead>
+            <tr>
+                <th width="8%">№№ п-п</th>
+                <th width="46%">Выполняемая Работа</th>
+                <th width="46%">Отметка о Выполнении</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% set i = 1 %}
+            {% for item in otherItems %}
+                <tr>
+                    <td>{{ i }}</td>
+                    <td>{{ item.work }}</td>
+                    <td>{{ item.mark }}</td>
+                </tr>
+                {% set i = i + 1 %}
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
