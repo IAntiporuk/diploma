@@ -2,20 +2,12 @@
 
 namespace BSUIR\IndividualPlanBundle\Controller;
 
-use BSUIR\IndividualPlanBundle\Entity\ScientificWork;
-use BSUIR\IndividualPlanBundle\Form\Type\ScientificWorkType;
+use BSUIR\IndividualPlanBundle\Entity\EducationWorkExecution;
+use BSUIR\IndividualPlanBundle\Form\Type\EducationWorkExecutionType;
 use Symfony\Component\HttpFoundation\Request;
 
-class ScientificWorkController extends BaseController
+class EducationWorkExecutionController extends BaseController
 {
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function indexAction()
-    {
-        return $this->render('BSUIRIndividualPlanBundle:ScientificWork:index.html.twig');
-    }
-
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
@@ -37,28 +29,27 @@ class ScientificWorkController extends BaseController
             return $this->redirect($this->generateUrl('individual_plan_index'));
         }
 
-        $scWork = new ScientificWork();
-        $form = $this->createForm(new ScientificWorkType(), $scWork);
+        $educationWorkExecution = new EducationWorkExecution();
+        $form = $this->createForm(new EducationWorkExecutionType(), $educationWorkExecution);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getManager();
-
             try{
-                $em->persist($scWork);
-                $individualPlan->setScientificWork($scWork);
+                $educationWorkExecution->setIndividualPlan($individualPlan);
+                $em->persist($educationWorkExecution);
                 $em->persist($individualPlan);
                 $em->flush();
             } catch (\Exception $e) {
                 die($e->getMessage());
             }
 
-            return $this->redirect($this->generateUrl('scientific_work_update', array(
-                'sw_id' => $scWork->getId(),
+            return $this->redirect($this->generateUrl('education_work_execution_update', array(
+                'ewe_id' => $educationWorkExecution->getId(),
             )));
         }
 
-        return $this->render('BSUIRIndividualPlanBundle:ScientificWork:create.html.twig', array(
+        return $this->render('BSUIRIndividualPlanBundle:EducationWorkExecution:create.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -70,46 +61,35 @@ class ScientificWorkController extends BaseController
     public function updateAction(Request $request)
     {
         $professor = $this->getUser();
-        $scWorkId = (int) $request->get('sw_id');
+        $eweId = (int) $request->get('ewe_id');
 
-        /** @var \BSUIR\IndividualPlanBundle\Repository\ScientificWork $scWorkRep */
-        $scWorkRep = $this->getRepository('BSUIRIndividualPlanBundle:ScientificWork');
-        /** @var ScientificWork $sw */
-        $scWork = $scWorkRep->findOneByIdAndProfessor($scWorkId, $professor);
+        /** @var \BSUIR\IndividualPlanBundle\Repository\EducationWorkExecution $eweRep */
+        $eweRep = $this->getRepository('BSUIRIndividualPlanBundle:EducationWorkExecution');
+        /** @var EducationWorkExecution $ewe */
+        $ewe = $eweRep->findOneByIdAndProfessor($eweId, $professor);
 
-        if (null === $scWork) {
+        if (null === $ewe) {
             //TODO: set error message
             return $this->redirect($this->generateUrl('individual_plan_index'));
         }
 
-        $form = $this->createForm(new ScientificWorkType(), $scWork);
+        $form = $this->createForm(new EducationWorkExecutionType(), $ewe);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getManager();
-
             try{
-                $em->persist($scWork);
+                $em->persist($ewe);
                 $em->flush();
             } catch (\Exception $e) {
                 die($e->getMessage());
             }
-
-            return $this->redirect($this->generateUrl('scientific_work_update', array(
-                'sw_id' => $scWork->getId(),
-            )));
         }
 
-        $scItems = $this
-            ->getRepository('BSUIRIndividualPlanBundle:ScientificItems')
-            ->findBy(array(
-                'scientificWork' => $scWork->getId(),
-            ));
-
-        return $this->render('BSUIRIndividualPlanBundle:ScientificWork:update.html.twig', array(
+        return $this->render('BSUIRIndividualPlanBundle:EducationWorkExecution:update.html.twig', array(
+            'ewe' => $ewe,
             'form' => $form->createView(),
-            'scWork' => $scWork,
-            'scItems' => $scItems,
+            'ewei' => '',
         ));
     }
 
@@ -120,22 +100,22 @@ class ScientificWorkController extends BaseController
     public function removeAction(Request $request)
     {
         $professor = $this->getUser();
-        $scWorkId = (int) $request->get('sw_id');
+        $eweId = (int) $request->get('ewe_id');
 
-        /** @var \BSUIR\IndividualPlanBundle\Repository\ScientificWork $scWorkRep */
-        $scWorkRep = $this->getRepository('BSUIRIndividualPlanBundle:ScientificWork');
-        /** @var ScientificWork $scWork */
-        $scWork = $scWorkRep->findOneByIdAndProfessor($scWorkId, $professor);
+        /** @var \BSUIR\IndividualPlanBundle\Repository\EducationWorkExecution $eweRep */
+        $eweRep = $this->getRepository('BSUIRIndividualPlanBundle:EducationWorkExecution');
+        /** @var EducationWorkExecution $ewe */
+        $ewe = $eweRep->findOneByIdAndProfessor($eweId, $professor);
 
-        if (null === $scWork) {
+        if (null === $ewe) {
             //TODO: set error message
             return $this->redirect($this->generateUrl('individual_plan_index'));
         }
 
-        $individualPlanId = $scWork->getIndividualPlan()->getId();
+        $individualPlanId = $ewe->getIndividualPlan()->getId();
         $em = $this->getManager();
         try{
-            $em->remove($scWork);
+            $em->remove($ewe);
             $em->flush();
         } catch (\Exception $e) {
             die($e->getMessage());
@@ -153,27 +133,26 @@ class ScientificWorkController extends BaseController
     public function printAction(Request $request)
     {
         $professor = $this->getUser();
-        $scWorkId = (int) $request->get('sw_id');
+        $eweId = (int) $request->get('ewe_id');
 
-        /** @var \BSUIR\IndividualPlanBundle\Repository\ScientificWork $scWorkRep */
-        $scWorkRep = $this->getRepository('BSUIRIndividualPlanBundle:ScientificWork');
-        /** @var ScientificWork $sw */
-        $scWork = $scWorkRep->findOneByIdAndProfessor($scWorkId, $professor);
+        /** @var \BSUIR\IndividualPlanBundle\Repository\EducationWorkExecution $eweRep */
+        $eweRep = $this->getRepository('BSUIRIndividualPlanBundle:EducationWorkExecution');
+        /** @var EducationWorkExecution $ewe */
+        $ewe = $eweRep->findOneByIdAndProfessor($eweId, $professor);
 
-        if (null === $scWork) {
+        if (null === $ewe) {
             //TODO: set error message
             return $this->redirect($this->generateUrl('individual_plan_index'));
         }
 
-        $scItems = $this
-            ->getRepository('BSUIRIndividualPlanBundle:ScientificItems')
+        $otherItems = $this
+            ->getRepository('BSUIRIndividualPlanBundle:OtherItems')
             ->findBy(array(
-                'scientificWork' => $scWork->getId(),
+                'otherWork' => $otherWork->getId(),
             ));
 
-        return $this->render('BSUIRIndividualPlanBundle:ScientificWork:print.html.twig', array(
-            'scWork' => $scWork,
-            'scItems' => $scItems,
+        return $this->render('BSUIRIndividualPlanBundle:OtherWork:print.html.twig', array(
+            'otherItems' => $otherItems,
         ));
     }
 }

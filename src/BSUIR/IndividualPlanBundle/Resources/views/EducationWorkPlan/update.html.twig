@@ -1,33 +1,26 @@
 {% extends 'BSUIRIndividualPlanBundle::base.html.twig' %}
-{% block title %}Изменить Научно-исследовательскую Работу{% endblock %}
-{% block h1 %}Изменить Научно-исследовательскую Работу{% endblock %}
+{% block title %}Изменить Учебную Работу(План){% endblock %}
+{% block h1 %}Изменить Учебную Работу(План){% endblock %}
 {% block main_content %}
     <div class="row">
-        <div class="col-lg-4">
-            {% if scItems %}
-                <p><a href="{{ url('scientific_work_print', {sw_id: scWork.id}) }}" class="btn btn-default btn-lg btn-block" target="_blank">Распечатать План</a></p>
-            {% endif %}
-        </div>
-        <div class="col-lg-8">
-            <p><a href="{{ url('scientific_items_create', {sw_id: scWork.id}) }}" class="btn btn-primary btn-lg btn-block">Создать запись</a></p>
-        </div>
+        {#<div class="col-lg-4">#}
+            {#{% if ewpi %}#}
+                {#<p><a href="{{ url('scientific_work_print', {sw_id: scWork.id}) }}" class="btn btn-default btn-lg btn-block" target="_blank">Распечатать План</a></p>#}
+            {#{% endif %}#}
+        {#</div>#}
+        {#<div class="col-lg-8">#}
+            {#<p><a href="{{ url('scientific_items_create', {sw_id: scWork.id}) }}" class="btn btn-primary btn-lg btn-block">Создать запись</a></p>#}
+        {#</div>#}
     </div>
     <div class="row">
         <div class="col-lg-4">
             {{ form_start(form, {'attr' : { 'class' : 'form-horizontal' }}) }}
             <fieldset>
                 <div class="form-group">
-                    {{ form_label(form.topicName, null, {'label_attr' : {'class' : 'col-lg-3 control-label' } }) }}
+                    {{ form_label(form.semester, null, {'label_attr' : {'class' : 'col-lg-3 control-label' } }) }}
                     <div class="col-lg-9">
-                        {{ form_widget(form.topicName, { 'attr' : { 'class' : 'form-control' } }) }}
-                        <span class="error">{{ form_errors(form.topicName) }}</span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.partName, null, {'label_attr' : {'class' : 'col-lg-3 control-label' } }) }}
-                    <div class="col-lg-9">
-                        {{ form_widget(form.partName, { 'attr' : { 'class' : 'form-control' } }) }}
-                        <span class="error">{{ form_errors(form.partName) }}</span>
+                        {{ form_widget(form.semester, { 'attr' : { 'class' : 'form-control' } }) }}
+                        <span class="error">{{ form_errors(form.semester) }}</span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -45,7 +38,7 @@
                     <h3 class="panel-title">Созданные Записи</h3>
                 </div>
                 <div class="panel-body">
-                    {% if scItems %}
+                    {% if ewpi %}
                         <table class="table table-striped table-hover ">
                             <thead>
                             <tr>

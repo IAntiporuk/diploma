@@ -1,0 +1,31 @@
+BSUIR\IndividualPlanBundle\Entity\EducationWorkPlan:
+    type: entity
+    table: educational_work_plan
+    repositoryClass: BSUIR\IndividualPlanBundle\Repository\EducationWorkPlan
+    manyToOne:
+        individualPlan:
+            targetEntity: IndividualPlans
+            mappedBy: null
+            inversedBy: educationWorksPlan
+            joinColumn:
+                name: individual_plan
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        semester:
+            type: integer
+        createdAt:
+            type: datetime
+        updatedAt:
+            type: datetime
+    uniqueConstraints:
+        ip_semester:
+            columns: individual_plan, semester
+    lifecycleCallbacks:
+        prePersist: [ prePersist, preUpdate ]
+        preUpdate: [ preUpdate ]

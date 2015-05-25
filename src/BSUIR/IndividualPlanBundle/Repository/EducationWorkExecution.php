@@ -6,29 +6,28 @@ use BSUIR\IndividualPlanBundle\Entity\Professors;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * EducationalMethodicalItems
+ * EducationWorkExecution
  */
-class EducationalMethodicalItems extends EntityRepository
+class EducationWorkExecution extends EntityRepository
 {
     /**
      * @param $id
      * @param Professors $professors
-     * @return \BSUIR\IndividualPlanBundle\Entity\EducationalMethodicalItems
+     * @return \BSUIR\IndividualPlanBundle\Entity\EducationWorkExecution
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function findOneByIdAndProfessor($id, Professors $professors)
     {
         return $this->getEntityManager()
             ->createQueryBuilder()
-            ->select('emi')
-            ->from($this->getClassName(), 'emi')
-            ->innerJoin('emi.educationalMethodicalWork', 'emw')
-            ->innerJoin('emw.individualPlan','ip')
+            ->select('ewe')
+            ->from($this->getClassName(), 'ewe')
+            ->innerJoin('ewe.individualPlan','ip')
             ->innerJoin('ip.professor','p')
-            ->where('emi.id = :emi_id')
+            ->where('ewe.id = :ewe_id')
             ->andWhere('p.id = :p_id')
             ->setParameters(array(
-                'emi_id' => $id,
+                'ewe_id' => $id,
                 'p_id' => $professors->getId(),
             ))
             ->getQuery()

@@ -2,6 +2,7 @@
 
 namespace BSUIR\IndividualPlanBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -50,6 +51,22 @@ class IndividualPlans
     private $otherWork;
 
     /**
+     * @var EducationWorkPlan
+     */
+    private $educationWorksPlan;
+
+    /**
+     * @var EducationWorkExecution
+     */
+    private $educationWorksExecution;
+
+    public function __construct()
+    {
+        $this->educationWorksPlan = new ArrayCollection();
+        $this->educationWorksExecution = new ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -63,7 +80,7 @@ class IndividualPlans
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return IndividualPlan
+     * @return IndividualPlans
      */
     public function setCreatedAt($createdAt)
     {
@@ -86,7 +103,7 @@ class IndividualPlans
      * Set session
      *
      * @param integer $session
-     * @return IndividualPlan
+     * @return IndividualPlans
      */
     public function setSession($session)
     {
@@ -183,6 +200,38 @@ class IndividualPlans
     public function setOtherWork($otherWork)
     {
         $this->otherWork = $otherWork;
+    }
+
+    /**
+     * @return EducationWorkPlan
+     */
+    public function getEducationWorksPlan()
+    {
+        return $this->educationWorksPlan;
+    }
+
+    /**
+     * @param EducationWorkPlan $educationWorksPlan
+     */
+    public function setEducationWorksPlan($educationWorksPlan)
+    {
+        $this->educationWorksPlan = $educationWorksPlan;
+    }
+
+    /**
+     * @return EducationWorkExecution
+     */
+    public function getEducationWorksExecution()
+    {
+        return $this->educationWorksExecution;
+    }
+
+    /**
+     * @param EducationWorkExecution $educationWorksExecution
+     */
+    public function setEducationWorksExecution($educationWorksExecution)
+    {
+        $this->educationWorksExecution = $educationWorksExecution;
     }
 
     /**

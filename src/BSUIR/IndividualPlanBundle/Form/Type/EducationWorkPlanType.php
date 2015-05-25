@@ -2,19 +2,18 @@
 
 namespace BSUIR\IndividualPlanBundle\Form\Type;
 
+use BSUIR\IndividualPlanBundle\Entity\EducationWorkPlan;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ScientificWorkType extends AbstractType
+class EducationWorkPlanType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('topicName', 'text', array(
-                'required' => true,
-            ))
-            ->add('partName', 'text', array(
+            ->add('semester', 'choice', array(
+                'choices' => EducationWorkPlan::getSemesters(),
                 'required' => true,
             ))
             ->add('create', 'submit');
@@ -25,13 +24,13 @@ class ScientificWorkType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'         => 'BSUIR\IndividualPlanBundle\Entity\ScientificWork',
-            'validation_groups'  => array('scientificWork')
+            'data_class'         => 'BSUIR\IndividualPlanBundle\Entity\EducationWorkPlan',
+            'validation_groups'  => array('educationWorkPlan')
         ));
     }
 
     public function getName()
     {
-        return 'scientificWork';
+        return 'educationWorkPlan';
     }
 }

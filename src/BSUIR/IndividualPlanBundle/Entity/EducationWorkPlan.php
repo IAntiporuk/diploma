@@ -2,13 +2,12 @@
 
 namespace BSUIR\IndividualPlanBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ScientificWork
+ * EducationWorkPlan
  */
-class ScientificWork
+class EducationWorkPlan
 {
     /**
      * @var integer
@@ -16,14 +15,9 @@ class ScientificWork
     private $id;
 
     /**
-     * @var string
+     * @var integer
      */
-    private $topicName;
-
-    /**
-     * @var string
-     */
-    private $partName;
+    private $semester;
 
     /**
      * @var \DateTime
@@ -41,13 +35,21 @@ class ScientificWork
     private $individualPlan;
 
     /**
-     * @var ArrayCollection
+     * @return array
      */
-    private $scientificItems;
-
-    public function __construct()
+    public static function getSemesters()
     {
-        $this->scientificItems = new ArrayCollection();
+        return array(
+            1 => 'Осенний',
+            2 => 'Весенний',
+        );
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStringSemester() {
+        return self::getSemesters()[$this->getSemester()];
     }
 
     /**
@@ -61,56 +63,33 @@ class ScientificWork
     }
 
     /**
-     * Set topicName
+     * Set semester
      *
-     * @param string $topicName
-     * @return ScientificWork
+     * @param integer $semester
+     * @return EducationWorkPlan
      */
-    public function setTopicName($topicName)
+    public function setSemester($semester)
     {
-        $this->topicName = $topicName;
+        $this->semester = $semester;
 
         return $this;
     }
 
     /**
-     * Get topicName
+     * Get semester
      *
-     * @return string 
+     * @return integer 
      */
-    public function getTopicName()
+    public function getSemester()
     {
-        return $this->topicName;
-    }
-
-    /**
-     * Set partName
-     *
-     * @param string $partName
-     * @return ScientificWork
-     */
-    public function setPartName($partName)
-    {
-        $this->partName = $partName;
-
-        return $this;
-    }
-
-    /**
-     * Get partName
-     *
-     * @return string 
-     */
-    public function getPartName()
-    {
-        return $this->partName;
+        return $this->semester;
     }
 
     /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return ScientificWork
+     * @return EducationWorkPlan
      */
     public function setCreatedAt($createdAt)
     {
@@ -133,7 +112,7 @@ class ScientificWork
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return ScientificWork
+     * @return EducationWorkPlan
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -182,21 +161,5 @@ class ScientificWork
     public function preUpdate()
     {
         $this->updatedAt = new \DateTime();
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getScientificItems()
-    {
-        return $this->scientificItems;
-    }
-
-    /**
-     * @param ArrayCollection $scientificItems
-     */
-    public function setScientificItems($scientificItems)
-    {
-        $this->scientificItems = $scientificItems;
     }
 }

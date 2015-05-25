@@ -181,3 +181,53 @@ other_items_remove:
     methods:  [GET]
     requirements:
         oi_id: \d+
+        
+education_work_plan_create:
+    path: /education-work-plan/create/{ip_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationWorkPlan:create }
+    methods:  [GET, POST]
+    requirements:
+        ip_id: \d+
+education_work_plan_update:
+    path: /education-work-plan/update/{ewp_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationWorkPlan:update }
+    methods:  [GET, POST]
+    requirements:
+        ewp_id: \d+
+education_work_plan_remove:
+    path: /education-work-plan/remove/{ewp_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationWorkPlan:remove }
+    methods:  [GET]
+    requirements:
+        ewp_id: \d+
+education_work_plan_print:
+    path: /education-work-plan/print/{ewp_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationWorkPlan:print }
+    methods:  [GET]
+    requirements:
+        ewp_id: \d+
+        
+education_work_execution_create:
+    path: /education-work-execution/create/{ip_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationWorkExecution:create }
+    methods:  [GET, POST]
+    requirements:
+        ip_id: \d+
+education_work_execution_update:
+    path: /education-work-execution/update/{ewe_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationWorkExecution:update }
+    methods:  [GET, POST]
+    requirements:
+        ewe_id: \d+
+education_work_execution_remove:
+    path: /education-work-execution/remove/{ewe_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationWorkExecution:remove }
+    methods:  [GET]
+    requirements:
+        ewe_id: \d+
+education_work_execution_print:
+    path: /education-work-execution/print/{ewe_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationWorkExecution:print }
+    methods:  [GET]
+    requirements:
+        ewe_id: \d+
