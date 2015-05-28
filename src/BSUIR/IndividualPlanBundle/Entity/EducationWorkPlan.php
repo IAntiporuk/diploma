@@ -2,6 +2,7 @@
 
 namespace BSUIR\IndividualPlanBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,6 +34,32 @@ class EducationWorkPlan
      * @var IndividualPlans
      */
     private $individualPlan;
+
+    /**
+     * @var EducationWorkPlanItems
+     */
+    private $educationWorkPlanItems;
+
+    public function __construct()
+    {
+        $this->educationWorkPlanItems = new ArrayCollection();
+    }
+
+    /**
+     * @return EducationWorkPlanItems
+     */
+    public function getEducationWorkPlanItems()
+    {
+        return $this->educationWorkPlanItems;
+    }
+
+    /**
+     * @param EducationWorkPlanItems $educationWorkPlanItems
+     */
+    public function setEducationWorkPlanItems($educationWorkPlanItems)
+    {
+        $this->educationWorkPlanItems = $educationWorkPlanItems;
+    }
 
     /**
      * @return array

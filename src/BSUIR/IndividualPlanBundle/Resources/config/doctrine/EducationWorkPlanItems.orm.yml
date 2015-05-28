@@ -1,0 +1,112 @@
+BSUIR\IndividualPlanBundle\Entity\EducationWorkPlanItems:
+    type: entity
+    table: education_work_plan_items
+    manyToOne:
+        educationWorkPlan:
+            targetEntity: EducationWorkPlan
+            mappedBy: null
+            inversedBy: educationWorkPlanItems
+            joinColumn:
+                name: educationWorkPlan
+                referencedColumnName: id
+    manyToMany:
+        groups:
+            targetEntity: Groups
+            mappedBy: null
+            inversedBy: educationWorkPlanItems
+            joinTable:
+                name: ewpitems_groups
+                joinColumns:
+                    ewp_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    group_id:
+                        referencedColumnName: id
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        createdAt:
+            type: datetime
+        updatedAt:
+            type: datetime
+        lectures:
+            type: integer
+            nullable: true
+        practicalLessons:
+            type: integer
+            nullable: true
+        labs:
+            type: integer
+            nullable: true
+        courseWork:
+            type: integer
+            nullable: true
+        sampleCalculation:
+            type: integer
+            nullable: true
+        calculationWork:
+            type: integer
+            nullable: true
+        individualPracticalWork:
+            type: integer
+            nullable: true
+        consultations:
+            type: integer
+            nullable: true
+        assessment:
+            type: integer
+            nullable: true
+        exams:
+            type: integer
+            nullable: true
+        reviews:
+            type: integer
+            nullable: true
+        controlIndependentWork:
+            type: integer
+            nullable: true
+        educationPractice:
+            type: integer
+            nullable: true
+        technologicalPractice:
+            type: integer
+            nullable: true
+        prediplomaPractice:
+            type: integer
+            nullable: true
+        diplomaDesign:
+            type: integer
+            nullable: true
+        gakConsultations:
+            type: integer
+            nullable: true
+        gakWorkCommission:
+            type: integer
+            nullable: true
+        gakProducingDepartment:
+            type: integer
+            nullable: true
+        gakExpert:
+            type: integer
+            nullable: true
+        controlHighStudents:
+            type: integer
+            nullable: true
+        checkHighStudents:
+            type: integer
+            nullable: true
+        controlGraduate:
+            type: integer
+            nullable: true
+        dropWeight:
+            type: integer
+            nullable: true
+        note:
+            type: text
+    lifecycleCallbacks:
+        prePersist: [ prePersist, preUpdate ]
+        preUpdate: [ preUpdate ]

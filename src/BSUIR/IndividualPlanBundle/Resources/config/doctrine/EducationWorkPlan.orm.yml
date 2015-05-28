@@ -2,6 +2,12 @@ BSUIR\IndividualPlanBundle\Entity\EducationWorkPlan:
     type: entity
     table: educational_work_plan
     repositoryClass: BSUIR\IndividualPlanBundle\Repository\EducationWorkPlan
+    oneToMany:
+        educationWorkPlanItems:
+            targetEntity: EducationWorkPlanItems
+            cascade: ['remove']
+            mappedBy: educationWorkPlan
+            inversedBy: null
     manyToOne:
         individualPlan:
             targetEntity: IndividualPlans

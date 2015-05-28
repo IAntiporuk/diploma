@@ -86,10 +86,16 @@ class EducationWorkPlanController extends BaseController
             }
         }
 
+        $ewpi = $this
+            ->getRepository('BSUIRIndividualPlanBundle:EducationWorkPlanItems')
+            ->findBy(array(
+                'educationWorkPlan' => $ewp->getId(),
+            ));
+
         return $this->render('BSUIRIndividualPlanBundle:EducationWorkPlan:update.html.twig', array(
             'ewp' => $ewp,
             'form' => $form->createView(),
-            'ewpi' => '',
+            'ewpi' => $ewpi,
         ));
     }
 

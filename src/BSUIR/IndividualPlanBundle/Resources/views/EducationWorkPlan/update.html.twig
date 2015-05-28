@@ -3,14 +3,14 @@
 {% block h1 %}Изменить Учебную Работу(План){% endblock %}
 {% block main_content %}
     <div class="row">
-        {#<div class="col-lg-4">#}
-            {#{% if ewpi %}#}
-                {#<p><a href="{{ url('scientific_work_print', {sw_id: scWork.id}) }}" class="btn btn-default btn-lg btn-block" target="_blank">Распечатать План</a></p>#}
-            {#{% endif %}#}
-        {#</div>#}
-        {#<div class="col-lg-8">#}
-            {#<p><a href="{{ url('scientific_items_create', {sw_id: scWork.id}) }}" class="btn btn-primary btn-lg btn-block">Создать запись</a></p>#}
-        {#</div>#}
+        <div class="col-lg-4">
+            {% if ewpi %}
+                <p><a href="{{ url('education_work_plan_print', {ewp_id: ewp.id}) }}" class="btn btn-default btn-lg btn-block" target="_blank">Распечатать План</a></p>
+            {% endif %}
+        </div>
+        <div class="col-lg-8">
+            <p><a href="{{ url('education_work_plan_items_create', {ewp_id: ewp.id}) }}" class="btn btn-primary btn-lg btn-block">Создать запись</a></p>
+        </div>
     </div>
     <div class="row">
         <div class="col-lg-4">
@@ -43,26 +43,28 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Название работ</th>
-                                <th>Начало</th>
-                                <th>Конец</th>
-                                <th>Отметка на 30.12</th>
-                                <th>Отметка на 01.07</th>
+                                <th>Группы</th>
+                                <th>Создана</th>
+                                <th>Обновлена</th>
+                                <th>Примечание</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            {% for item in scItems %}
+                            {% for item in ewpi %}
                                 <tr>
                                     <td>{{ item.id }}</td>
-                                    <td>{{ item.workName }}</td>
-                                    <td>{{ item.startedAt|date('d.m.Y') }}</td>
-                                    <td>{{ item.finishedAt|date('d.m.Y') }}</td>
-                                    <td>{{ item.markFirst }}</td>
-                                    <td>{{ item.markSecond }}</td>
                                     <td>
-                                        <a href="{{ url('scientific_items_update', {si_id: item.id}) }}" class="btn btn-warning">Обновить</a>
-                                        <a href="{{ url('scientific_items_remove', {si_id: item.id}) }}" class="btn btn-danger">Удалить</a>
+                                        {% for group in item.groups %}
+                                            {{ group.name }}
+                                        {% endfor %}
+                                    </td>
+                                    <td>{{ item.createdAt|date('d.m.Y') }}</td>
+                                    <td>{{ item.updatedAt|date('d.m.Y') }}</td>
+                                    <td>{{ item.note }}</td>
+                                    <td>
+                                        <a href="{{ url('education_work_plan_items_update', {ewpi_id: item.id}) }}" class="btn btn-warning">Обновить</a>
+                                        <a href="{{ url('education_work_plan_items_remove', {ewpi_id: item.id}) }}" class="btn btn-danger">Удалить</a>
                                     </td>
                                 </tr>
                             {% endfor %}

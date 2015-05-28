@@ -11,24 +11,27 @@ class ProfessorsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName', 'text', array('required' => true))
-            ->add('secondName', 'text', array('required' => true))
-            ->add('lastName', 'text', array('required' => true))
+            ->add('firstName', 'text', array('required' => true, 'label' => 'Имя'))
+            ->add('secondName', 'text', array('required' => true, 'label' => 'Отчество'))
+            ->add('lastName', 'text', array('required' => true, 'label' => 'Фамилия'))
             ->add('department', 'entity', array(
                 'required' => true,
                 'class' => 'BSUIRIndividualPlanBundle:Departments',
                 'property' => 'name',
+                'label' => 'Кафедра',
             ))
-            ->add('email', 'email', array('required' => true))
-            ->add('academicTitle', 'text', array('required' => true))
-            ->add('scholasticDegree', 'text', array('required' => true))
+            ->add('email', 'email', array('required' => true,))
+            ->add('academicTitle', 'text', array('required' => true, 'label' => 'Учёнок звание'))
+            ->add('scholasticDegree', 'text', array('required' => true, 'label' => 'Учёная степень'))
             ->add('competitionSelected', 'date', array(
                 'input'  => 'datetime',
                 'widget' => 'choice',
                 'required' => true,
+                'label' => 'Избран по конкурсу',
             ))
             ->add('isHead', 'checkbox', array(
                 'required' => false,
+                'label' => 'Зав. кафедры'
             ));
 
         return true;

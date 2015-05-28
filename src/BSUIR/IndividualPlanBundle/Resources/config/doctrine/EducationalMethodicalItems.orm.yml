@@ -8,7 +8,7 @@ BSUIR\IndividualPlanBundle\Entity\EducationalMethodicalItems:
             mappedBy: null
             inversedBy: educationalMethodicalItems
             joinColumn:
-                name: educational_methodical_work
+                name: educationalMethodicalWork
                 referencedColumnName: id
     id:
         id:

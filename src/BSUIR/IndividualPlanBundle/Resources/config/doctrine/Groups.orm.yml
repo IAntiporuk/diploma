@@ -8,6 +8,11 @@ BSUIR\IndividualPlanBundle\Entity\Groups:
             joinTable:
                 name: specialty
                 referencedColumnName: id
+    manyToMany:
+        educationWorkPlanItems:
+          targetEntity: EducationWorkPlanItems
+          mappedBy: groups
+          inversedBy: null
     id:
         id:
             type: integer
