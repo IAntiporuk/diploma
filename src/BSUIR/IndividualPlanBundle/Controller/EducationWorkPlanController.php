@@ -60,13 +60,7 @@ class EducationWorkPlanController extends BaseController
      */
     public function updateAction(Request $request)
     {
-        $professor = $this->getUser();
-        $ewpId = (int) $request->get('ewp_id');
-
-        /** @var \BSUIR\IndividualPlanBundle\Repository\EducationWorkPlan $ewpRep */
-        $ewpRep = $this->getRepository('BSUIRIndividualPlanBundle:EducationWorkPlan');
-        /** @var EducationWorkPlan $ewp */
-        $ewp = $ewpRep->findOneByIdAndProfessor($ewpId, $professor);
+        $ewp = $this->getEWP($request);
 
         if (null === $ewp) {
             //TODO: set error message
@@ -105,13 +99,7 @@ class EducationWorkPlanController extends BaseController
      */
     public function removeAction(Request $request)
     {
-        $professor = $this->getUser();
-        $ewpId = (int) $request->get('ewp_id');
-
-        /** @var \BSUIR\IndividualPlanBundle\Repository\EducationWorkPlan $ewpRep */
-        $ewpRep = $this->getRepository('BSUIRIndividualPlanBundle:EducationWorkPlan');
-        /** @var EducationWorkPlan $ewp */
-        $ewp = $ewpRep->findOneByIdAndProfessor($ewpId, $professor);
+        $ewp = $this->getEWP($request);
 
         if (null === $ewp) {
             //TODO: set error message
@@ -138,27 +126,36 @@ class EducationWorkPlanController extends BaseController
      */
     public function printAction(Request $request)
     {
-        $professor = $this->getUser();
-        $ewpId = (int) $request->get('ewp_id');
-
-        /** @var \BSUIR\IndividualPlanBundle\Repository\EducationWorkPlan $ewpRep */
-        $ewpRep = $this->getRepository('BSUIRIndividualPlanBundle:EducationWorkPlan');
-        /** @var EducationWorkPlan $ewp */
-        $ewp = $ewpRep->findOneByIdAndProfessor($ewpId, $professor);
+        $ewp = $this->getEWP($request);
 
         if (null === $ewp) {
             //TODO: set error message
             return $this->redirect($this->generateUrl('individual_plan_index'));
         }
 
-        $otherItems = $this
-            ->getRepository('BSUIRIndividualPlanBundle:OtherItems')
+        $ewpi = $this
+            ->getRepository('BSUIRIndividualPlanBundle:EducationWorkPlanItems')
             ->findBy(array(
-                'otherWork' => $otherWork->getId(),
+                'educationWorkPlan' => $ewp,
             ));
 
-        return $this->render('BSUIRIndividualPlanBundle:OtherWork:print.html.twig', array(
-            'otherItems' => $otherItems,
+        return $this->render('BSUIRIndividualPlanBundle:EducationWorkPlan:print.html.twig', array(
+            'ewpi' => $ewpi,
         ));
+    }
+
+    /**
+     * @param Request $request
+     * @return EducationWorkPlan
+     */
+    protected function getEWP(Request $request)
+    {
+        $professor = $this->getUser();
+        $ewpId = (int) $request->get('ewp_id');
+
+        /** @var \BSUIR\IndividualPlanBundle\Repository\EducationWorkPlan $ewpRep */
+        $ewpRep = $this->getRepository('BSUIRIndividualPlanBundle:EducationWorkPlan');
+        /** @var EducationWorkPlan $ewp */
+        return $ewpRep->findOneByIdAndProfessor($ewpId, $professor);
     }
 }

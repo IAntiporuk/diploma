@@ -1,6 +1,7 @@
 BSUIR\IndividualPlanBundle\Entity\EducationWorkPlanItems:
     type: entity
     table: education_work_plan_items
+    repositoryClass: BSUIR\IndividualPlanBundle\Repository\EducationWorkPlanItems
     manyToOne:
         educationWorkPlan:
             targetEntity: EducationWorkPlan

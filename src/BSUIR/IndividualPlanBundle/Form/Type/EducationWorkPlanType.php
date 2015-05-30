@@ -15,6 +15,7 @@ class EducationWorkPlanType extends AbstractType
             ->add('semester', 'choice', array(
                 'choices' => EducationWorkPlan::getSemesters(),
                 'required' => true,
+                'label' => 'Семестр',
             ))
             ->add('create', 'submit');
 

@@ -3,9 +3,7 @@
 namespace BSUIR\IndividualPlanBundle\Controller;
 
 use BSUIR\IndividualPlanBundle\Entity\EducationWorkPlanItems;
-use BSUIR\IndividualPlanBundle\Form\Type\EducationalMethodicalItemsType;
 use BSUIR\IndividualPlanBundle\Form\Type\EducationWorkPlanItemsType;
-use BSUIR\IndividualPlanBundle\Form\Type\EducationWorkPlanType;
 use Symfony\Component\HttpFoundation\Request;
 
 class EducationWorkPlanItemsController extends BaseController
@@ -59,68 +57,68 @@ class EducationWorkPlanItemsController extends BaseController
      */
     public function updateAction(Request $request)
     {
-        $professor = $this->getUser();
-        $eduMethItemId = $request->get('emi_id');
+        $ewpi = $this->getEWPI($request);
 
-        /** @var \BSUIR\IndividualPlanBundle\Repository\EducationalMethodicalItems $eduMethItemsRep */
-        $eduMethItemsRep = $this->getRepository('BSUIRIndividualPlanBundle:EducationalMethodicalItems');
-        $eduMethItem = $eduMethItemsRep->findOneByIdAndProfessor($eduMethItemId, $professor);
-
-        if (null === $eduMethItem) {
+        if (null === $ewpi) {
             // TODO: set error message
             return $this->redirect($this->generateUrl('individual_plan_index'));
         }
 
-        $form = $this->createForm(new EducationalMethodicalItemsType(), $eduMethItem);
+        $form = $this->createForm(new EducationWorkPlanItemsType(), $ewpi);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getManager();
             try {
-                $em->persist($eduMethItem);
+                $em->persist($ewpi);
                 $em->flush();
             } catch(\Exception $e) {
                 //TODO: set error message
                 die($e->getMessage());
             }
 
-            return $this->redirect($this->generateUrl('educational_methodical_work_update', array(
-                'emw_id' => $eduMethItem->getEducationalMethodicalWork()->getId(),
+            return $this->redirect($this->generateUrl('education_work_plan_update', array(
+                'ewp_id' => $ewpi->getEducationWorkPlan()->getId(),
             )));
         }
 
-        return $this->render('BSUIRIndividualPlanBundle:EducationalMethodicalItems:update.html.twig', array(
+        return $this->render('BSUIRIndividualPlanBundle:EducationWorkPlanItems:update.html.twig', array(
             'form' => $form->createView(),
         ));
     }
 
     public function removeAction(Request $request)
     {
-        $professor = $this->getUser();
-        $eduMethItemId = $request->get('emi_id');
+        $ewpi = $this->getEWPI($request);
 
-        /** @var \BSUIR\IndividualPlanBundle\Repository\EducationalMethodicalItems $eduMethItemsRep */
-        $eduMethItemsRep = $this->getRepository('BSUIRIndividualPlanBundle:EducationalMethodicalItems');
-        $eduMethItem = $eduMethItemsRep->findOneByIdAndProfessor($eduMethItemId, $professor);
-
-        if (null === $eduMethItem) {
+        if (null === $ewpi) {
             // TODO: set error message
             return $this->redirect($this->generateUrl('individual_plan_index'));
         }
 
-        $eduMethWorkId = $eduMethItem->getEducationalMethodicalWork()->getId();
+        $ewp = $ewpi->getEducationWorkPlan()->getId();
         $em = $this->getManager();
         try {
-            $em->remove($eduMethItem);
+            $em->remove($ewpi);
             $em->flush();
         } catch(\Exception $e) {
             //TODO: set error message
             die($e->getMessage());
         }
 
-        return $this->redirect($this->generateUrl('educational_methodical_work_update', array(
-            'emw_id' => $eduMethWorkId,
+        return $this->redirect($this->generateUrl('education_work_plan_update', array(
+            'ewp_id' => $ewp,
         )));
+    }
 
+    protected function getEWPI(Request $request)
+    {
+        $professor = $this->getUser();
+        $ewpiId = $request->get('ewpi_id');
+
+        /** @var \BSUIR\IndividualPlanBundle\Repository\EducationWorkPlanItems $ewpiRep */
+        $ewpiRep = $this->getRepository('BSUIRIndividualPlanBundle:EducationWorkPlanItems');
+
+        return $ewpiRep->findOneByIdAndProfessor($ewpiId, $professor);
     }
 }

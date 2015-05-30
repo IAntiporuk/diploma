@@ -17,9 +17,9 @@
             {{ form_start(form, {'attr' : { 'class' : 'form-horizontal' }}) }}
             <fieldset>
                 <div class="form-group">
-                    {{ form_label(form.semester, null, {'label_attr' : {'class' : 'col-lg-3 control-label' } }) }}
+                    {{ form_label(form.semester, null, {'label_attr': {'class': 'col-lg-3 control-label'}})}}
                     <div class="col-lg-9">
-                        {{ form_widget(form.semester, { 'attr' : { 'class' : 'form-control' } }) }}
+                        {{ form_widget(form.semester, {'attr': {'class': 'form-control'}})}}
                         <span class="error">{{ form_errors(form.semester) }}</span>
                     </div>
                 </div>

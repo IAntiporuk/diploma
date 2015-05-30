@@ -17,6 +17,8 @@ class RegistrationType extends AbstractType
                     'invalid_message' => 'Password is not confirmed.',
                     'first_name' => 'password',
                     'second_name' => 'confirm',
+                    'first_options'  => array('label' => 'Пароль'),
+                    'second_options' => array('label' => 'Подтвердите пароль'),
                     'error_bubbling' => true,
                     'required' => true
                 )

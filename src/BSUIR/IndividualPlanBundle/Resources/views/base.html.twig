@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 {% block stylesheets %}
     {% stylesheets
+    '@BSUIRIndividualPlanBundle/Resources/public/libs/select2/select2.css'
     '@BSUIRIndividualPlanBundle/Resources/public/bootstrap/themes/yeti/*.css'
     '@BSUIRIndividualPlanBundle/Resources/public/css/*'
     filter='cssrewrite'
@@ -31,6 +32,7 @@
 {% block javascripts %}
     {% javascripts
     '@BSUIRIndividualPlanBundle/Resources/public/js/*'
+    '@BSUIRIndividualPlanBundle/Resources/public/libs/select2/select2.full.min.js'
     '@BSUIRIndividualPlanBundle/Resources/public/bootstrap/*.js'
     %}
     <script src="{{ asset_url }}"></script>

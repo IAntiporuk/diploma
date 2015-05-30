@@ -34,7 +34,7 @@
                     {% if ewsp.count < 2 %}
                         {% if ewsp.count == 1 %}
                             <p>
-                                {% if ewp.educationWorkPlanItems.count %}
+                                {% if ewsp[0].educationWorkPlanItems.count %}
                                     <a href="{{ url('education_work_plan_print', {ewp_id: ewp.id}) }}" target="_blank" class="btn btn-success">Печать</a>
                                 {% endif %}
                                 <a href="{{ url('education_work_plan_update', {ewp_id: ewsp[0].id}) }}" class="">{{ ewsp[0].stringSemester }} семестр</a>
