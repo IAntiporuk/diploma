@@ -34,10 +34,10 @@
                     {% if ewsp.count < 2 %}
                         {% if ewsp.count == 1 %}
                             <p>
-                                {% if ewsp[0].educationWorkPlanItems.count %}
-                                    <a href="{{ url('education_work_plan_print', {ewp_id: ewp.id}) }}" target="_blank" class="btn btn-success">Печать</a>
-                                {% endif %}
                                 <a href="{{ url('education_work_plan_update', {ewp_id: ewsp[0].id}) }}" class="">{{ ewsp[0].stringSemester }} семестр</a>
+                                {% if ewsp[0].educationWorkPlanItems.count %}
+                                    <a href="{{ url('education_work_plan_print', {ewp_id: ewsp[0].id}) }}" target="_blank" class="btn btn-success">Печать</a>
+                                {% endif %}
                                 <a href="{{ url('education_work_plan_update', {ewp_id: ewsp[0].id}) }}" class="btn btn-warning">Просмотреть</a>
                                 <a href="{{ url('education_work_plan_remove', {ewp_id: ewsp[0].id}) }}" class="btn btn-danger">Удалить</a>
                             </p>

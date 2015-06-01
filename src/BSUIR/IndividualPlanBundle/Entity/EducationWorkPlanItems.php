@@ -181,6 +181,18 @@ class EducationWorkPlanItems
         $this->groups = $groups;
     }
 
+    public function getGroupsString()
+    {
+        $result = '';
+        /**
+         * @var \BSUIR\IndividualPlanBundle\Entity\Groups $group
+         */
+        foreach ($this->groups as $group) {
+            $result .= $group->getName() . ' ';
+        }
+
+        return $result;
+    }
     /**
      * Get id
      *

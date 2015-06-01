@@ -3,12 +3,15 @@
 {% block print_content %}
     {% if ewpi %}
         <h1>Учебная Работа(План)</h1>
-        <table>
+        <table class="none-width">
             <thead>
             <tr>
-                <th width="8%">№№ п-п</th>
-                <th width="46%">Выполняемая Работа</th>
-                <th width="46%">Отметка о Выполнении</th>
+                <th>№№ п-п</th>
+                <th>№№ г-г</th>
+                <th>Лекции</th>
+                <th>Практические занятия</th>
+                <th>Лабараторныае</th>
+                <th>Примечание</th>
             </tr>
             </thead>
             <tbody>
@@ -16,16 +19,14 @@
             {% for item in ewpi %}
                 <tr>
                     <td>{{ i }}</td>
-                    <td>{{ item.createdAt|date() }}</td>
-                    <td>{{ item.updatedAt|date() }}</td>
+                    <td>{{ item.groupsString }}</td>
+                    <td>{{ item.lectures}}</td>
+                    <td>{{ item.practicalLessons}}</td>
+                    <td>{{ item.labs}}</td>
+                    <td>{{ item.note }}</td>
                 </tr>
                 {% set i = i + 1 %}
             {% endfor %}
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
             </tbody>
         </table>
     {% endif %}
