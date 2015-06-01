@@ -13,9 +13,11 @@ class ScientificWorkType extends AbstractType
         $builder
             ->add('topicName', 'text', array(
                 'required' => true,
+                'label' => 'Название научно-исследовательской темы, задания по сотрудничеству с промышленностью или задания по внедрению выполненных работ и т.д.'
             ))
             ->add('partName', 'text', array(
                 'required' => true,
+                'label' => 'Название раздела, который выполняется в этом году'
             ))
             ->add('create', 'submit');
 

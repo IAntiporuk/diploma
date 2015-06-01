@@ -13,25 +13,31 @@ class ScientificItemsType extends AbstractType
         $builder
             ->add('workName', 'text', array(
                 'required' => true,
+                'label' => 'Название этапа',
             ))
             ->add('startedAt', 'date', array(
                 'input'  => 'datetime',
                 'widget' => 'choice',
+                'label' => 'Начало',
                 'required' => false,
             ))
             ->add('finishedAt', 'date', array(
                 'input'  => 'datetime',
                 'widget' => 'choice',
+                'label' => 'Конец',
                 'required' => false,
             ))
             ->add('markFirst', 'text', array(
                 'required' => false,
+                'label' => 'Отметка зав. кафедры о выполнении на 30.12',
             ))
             ->add('markSecond', 'text', array(
                 'required' => false,
+                'label' => 'Отметка зав. кафедры о выполнении на 01.07',
             ))
             ->add('note', 'textarea', array(
                 'required' => false,
+                'label' => 'Примечание',
             ))
             ->add('create', 'submit', array(
                 'label' => 'Создать'

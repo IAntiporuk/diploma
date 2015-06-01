@@ -41,7 +41,6 @@ class IndividualPlansController extends BaseController
                 $em->persist($individualPlan);
                 $em->flush();
             } catch( \Exception $e) {
-                // TODO: create notice
                 die($e->getMessage());
             }
 
