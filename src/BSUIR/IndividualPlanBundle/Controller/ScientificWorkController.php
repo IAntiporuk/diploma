@@ -33,7 +33,6 @@ class ScientificWorkController extends BaseController
             ));
 
         if (null === $individualPlan) {
-            //TODO: set message error
             return $this->redirect($this->generateUrl('individual_plan_index'));
         }
 

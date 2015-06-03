@@ -15,17 +15,27 @@ class ScientificItemsType extends AbstractType
                 'required' => true,
                 'label' => 'Название этапа',
             ))
-            ->add('startedAt', 'date', array(
-                'input'  => 'datetime',
-                'widget' => 'choice',
+            ->add('startedAt', 'collot_datetime', array(
                 'label' => 'Начало',
-                'required' => false,
+                'pickerOptions' =>
+                    array(
+                        'format' => 'mm/dd/yyyy',
+                        'startView' => 'month',
+                        'minView' => 'month',
+                        'language' => 'ru',
+                    ),
+                'required' => true,
             ))
-            ->add('finishedAt', 'date', array(
-                'input'  => 'datetime',
-                'widget' => 'choice',
+            ->add('finishedAt', 'collot_datetime', array(
                 'label' => 'Конец',
-                'required' => false,
+                'pickerOptions' =>
+                    array(
+                        'format' => 'mm/dd/yyyy',
+                        'startView' => 'month',
+                        'minView' => 'month',
+                        'language' => 'ru',
+                    ),
+                'required' => true,
             ))
             ->add('markFirst', 'text', array(
                 'required' => false,

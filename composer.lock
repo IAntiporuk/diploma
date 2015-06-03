@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ab8a4dc73911cb5cd98ffa247cd0786f",
+    "hash": "9dbee27f89b034dbedb80fcdf10eaf6a",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -410,16 +410,16 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "v1.4.0",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "1986ff3a945b584c6505d07eae92d77e41131078"
+                "reference": "0b9e27037c4fdbad515ee5ec89842e9091a6480f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/1986ff3a945b584c6505d07eae92d77e41131078",
-                "reference": "1986ff3a945b584c6505d07eae92d77e41131078",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/0b9e27037c4fdbad515ee5ec89842e9091a6480f",
+                "reference": "0b9e27037c4fdbad515ee5ec89842e9091a6480f",
                 "shasum": ""
             },
             "require": {
@@ -427,6 +427,7 @@
                 "doctrine/doctrine-cache-bundle": "~1.0",
                 "jdorn/sql-formatter": "~1.1",
                 "php": ">=5.3.2",
+                "symfony/console": "~2.3",
                 "symfony/doctrine-bridge": "~2.2",
                 "symfony/framework-bundle": "~2.3"
             },
@@ -445,7 +446,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4.x-dev"
+                    "dev-master": "1.5.x-dev"
                 }
             },
             "autoload": {
@@ -483,7 +484,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2015-02-28 11:04:45"
+            "time": "2015-05-28 12:27:15"
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
@@ -576,19 +577,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineMigrationsBundle.git",
-                "reference": "6a1bd731dbdd4ad952a3b246a8f38c9c12f52e62"
+                "reference": "1e8cd4415bd2f893eb828216b529a75e8b61d579"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/6a1bd731dbdd4ad952a3b246a8f38c9c12f52e62",
-                "reference": "6a1bd731dbdd4ad952a3b246a8f38c9c12f52e62",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/1e8cd4415bd2f893eb828216b529a75e8b61d579",
+                "reference": "1e8cd4415bd2f893eb828216b529a75e8b61d579",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-bundle": "~1.0",
                 "doctrine/migrations": "~1.0@dev",
                 "php": ">=5.3.2",
-                "symfony/framework-bundle": "~2.1"
+                "symfony/framework-bundle": "~2.3|~3.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -626,7 +627,7 @@
                 "migrations",
                 "schema"
             ],
-            "time": "2015-02-16 13:24:46"
+            "time": "2015-05-06 08:32:15"
         },
         {
             "name": "doctrine/inflector",
@@ -755,23 +756,28 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "a4f14d3a3d397104e557ec65d1a4e43bb86e4ddf"
+                "reference": "abb87d84ed21fd30c27bd3b52252a495a36d32fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/a4f14d3a3d397104e557ec65d1a4e43bb86e4ddf",
-                "reference": "a4f14d3a3d397104e557ec65d1a4e43bb86e4ddf",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/abb87d84ed21fd30c27bd3b52252a495a36d32fb",
+                "reference": "abb87d84ed21fd30c27bd3b52252a495a36d32fb",
                 "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "~2.0",
-                "php": ">=5.3.2"
+                "php": ">=5.3.2",
+                "symfony/console": "~2.3",
+                "symfony/yaml": "~2.3"
+            },
+            "conflict": {
+                "doctrine/orm": "<2.4"
             },
             "require-dev": {
+                "doctrine/coding-standard": "dev-master",
                 "doctrine/orm": "2.*",
                 "phpunit/phpunit": "~4.0",
-                "symfony/console": "2.*",
-                "symfony/yaml": "2.*"
+                "satooshi/php-coveralls": "0.6.*"
             },
             "suggest": {
                 "symfony/console": "to run the migration from the console"
@@ -807,7 +813,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2015-05-02 06:20:23"
+            "time": "2015-05-26 15:30:26"
         },
         {
             "name": "doctrine/orm",
@@ -1289,17 +1295,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.22",
+            "version": "v3.0.28",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "0fe4ec86db57c232becb694e01cdabe3c4d9af7c"
+                "reference": "8175618b07793b9d43c3be931f3d8d4c14c9e866"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/0fe4ec86db57c232becb694e01cdabe3c4d9af7c",
-                "reference": "0fe4ec86db57c232becb694e01cdabe3c4d9af7c",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/8175618b07793b9d43c3be931f3d8d4c14c9e866",
+                "reference": "8175618b07793b9d43c3be931f3d8d4c14c9e866",
                 "shasum": ""
             },
             "require": {
@@ -1345,21 +1351,20 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-05-02 16:23:08"
+            "time": "2015-06-01 15:04:20"
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "v3.0.7",
-            "target-dir": "Sensio/Bundle/FrameworkExtraBundle",
+            "version": "v3.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "5c37623576ea9e841b87dc0d85414d98fa6f7abb"
+                "reference": "a30fc18bf147bc25faf6b1d54bf55cfad4b63cba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/5c37623576ea9e841b87dc0d85414d98fa6f7abb",
-                "reference": "5c37623576ea9e841b87dc0d85414d98fa6f7abb",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/a30fc18bf147bc25faf6b1d54bf55cfad4b63cba",
+                "reference": "a30fc18bf147bc25faf6b1d54bf55cfad4b63cba",
                 "shasum": ""
             },
             "require": {
@@ -1372,6 +1377,7 @@
             },
             "suggest": {
                 "symfony/expression-language": "",
+                "symfony/psr-http-message-bridge": "To use the PSR-7 converters",
                 "symfony/security-bundle": ""
             },
             "type": "symfony-bundle",
@@ -1381,8 +1387,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Sensio\\Bundle\\FrameworkExtraBundle": ""
+                "psr-4": {
+                    "Sensio\\Bundle\\FrameworkExtraBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1400,68 +1406,20 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2015-04-02 12:28:58"
-        },
-        {
-            "name": "sensio/generator-bundle",
-            "version": "v2.5.3",
-            "target-dir": "Sensio/Bundle/GeneratorBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "e50108c2133ee5c9c484555faed50c17a61221d3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/e50108c2133ee5c9c484555faed50c17a61221d3",
-                "reference": "e50108c2133ee5c9c484555faed50c17a61221d3",
-                "shasum": ""
-            },
-            "require": {
-                "symfony/console": "~2.5",
-                "symfony/framework-bundle": "~2.2"
-            },
-            "require-dev": {
-                "doctrine/orm": "~2.2,>=2.2.3",
-                "symfony/doctrine-bridge": "~2.2",
-                "twig/twig": "~1.11"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.5.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Sensio\\Bundle\\GeneratorBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "This bundle generates code for you",
-            "time": "2015-03-17 06:36:52"
+            "time": "2015-05-29 18:27:23"
         },
         {
             "name": "sensiolabs/security-checker",
-            "version": "v2.0.2",
+            "version": "v2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/security-checker.git",
-                "reference": "cecb1397087dc9c733796eda6e9d121336039cdc"
+                "reference": "2c2a71f1c77d9765c12638c4724d9ca23658a810"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/cecb1397087dc9c733796eda6e9d121336039cdc",
-                "reference": "cecb1397087dc9c733796eda6e9d121336039cdc",
+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/2c2a71f1c77d9765c12638c4724d9ca23658a810",
+                "reference": "2c2a71f1c77d9765c12638c4724d9ca23658a810",
                 "shasum": ""
             },
             "require": {
@@ -1493,7 +1451,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
-            "time": "2015-04-21 07:52:05"
+            "time": "2015-05-28 14:22:40"
         },
         {
             "name": "sonata-project/admin-bundle",
@@ -1501,12 +1459,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "1a4c53d0da0aab9a945a53b7c7f415c4cec41b7b"
+                "reference": "b045f8e45aa5ef1b4d5a66824523ddb97c043969"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/1a4c53d0da0aab9a945a53b7c7f415c4cec41b7b",
-                "reference": "1a4c53d0da0aab9a945a53b7c7f415c4cec41b7b",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/b045f8e45aa5ef1b4d5a66824523ddb97c043969",
+                "reference": "b045f8e45aa5ef1b4d5a66824523ddb97c043969",
                 "shasum": ""
             },
             "require": {
@@ -1514,8 +1472,8 @@
                 "doctrine/inflector": "~1.0",
                 "knplabs/knp-menu": ">=2.0,<3.0",
                 "knplabs/knp-menu-bundle": ">=2.0,<3.0.0",
-                "sensio/generator-bundle": "~2.3",
                 "sonata-project/block-bundle": "~2.3",
+                "sonata-project/core-bundle": "^2.3.2",
                 "sonata-project/exporter": "~1.0",
                 "symfony/class-loader": "~2.3",
                 "symfony/config": "~2.3",
@@ -1535,12 +1493,14 @@
             },
             "require-dev": {
                 "jms/translation-bundle": "~1.1",
+                "sensio/generator-bundle": "~2.3",
                 "sonata-project/intl-bundle": "~2.1",
                 "symfony/phpunit-bridge": "2.7.*@dev",
                 "symfony/yaml": "~2.3"
             },
             "suggest": {
                 "jms/translation-bundle": "Extract message keys from Admins",
+                "sensio/generator-bundle": "Add sonata:admin:generate command",
                 "sonata-project/intl-bundle": "Add localized date and number into the list"
             },
             "type": "symfony-bundle",
@@ -1577,7 +1537,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2015-05-06 09:17:40"
+            "time": "2015-05-28 10:12:17"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -1644,16 +1604,16 @@
         },
         {
             "name": "sonata-project/cache",
-            "version": "1.0.5",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/cache.git",
-                "reference": "0d2956070d31a1e6d3504b0671ffeb76818b0676"
+                "reference": "a1522be3a1874c4646e7f9aaea6ca973b8bcbcde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/cache/zipball/0d2956070d31a1e6d3504b0671ffeb76818b0676",
-                "reference": "0d2956070d31a1e6d3504b0671ffeb76818b0676",
+                "url": "https://api.github.com/repos/sonata-project/cache/zipball/a1522be3a1874c4646e7f9aaea6ca973b8bcbcde",
+                "reference": "a1522be3a1874c4646e7f9aaea6ca973b8bcbcde",
                 "shasum": ""
             },
             "require-dev": {
@@ -1701,20 +1661,20 @@
                 "mongodb",
                 "redis"
             ],
-            "time": "2015-03-21 08:32:46"
+            "time": "2015-05-18 12:12:33"
         },
         {
             "name": "sonata-project/core-bundle",
-            "version": "2.3.1",
+            "version": "2.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "b2e2127dbb739598b5ebc0378a9b1d93022680e6"
+                "reference": "360942d98ac7441dc9b06b089ef8636721e37f9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/b2e2127dbb739598b5ebc0378a9b1d93022680e6",
-                "reference": "b2e2127dbb739598b5ebc0378a9b1d93022680e6",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/360942d98ac7441dc9b06b089ef8636721e37f9c",
+                "reference": "360942d98ac7441dc9b06b089ef8636721e37f9c",
                 "shasum": ""
             },
             "require": {
@@ -1762,11 +1722,11 @@
                 }
             ],
             "description": "Symfony SonataCoreBundle",
-            "homepage": "http://sonata-project.org/bundles/core",
+            "homepage": "https://sonata-project.org/bundles/core",
             "keywords": [
                 "sonata"
             ],
-            "time": "2015-03-09 09:18:34"
+            "time": "2015-05-18 14:31:37"
         },
         {
             "name": "sonata-project/doctrine-orm-admin-bundle",
@@ -1774,12 +1734,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "e114b10f5c62cbc361633d666fef281b5240ed27"
+                "reference": "4208dc19c796bc822e9f7343023266514d36291d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/e114b10f5c62cbc361633d666fef281b5240ed27",
-                "reference": "e114b10f5c62cbc361633d666fef281b5240ed27",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/4208dc19c796bc822e9f7343023266514d36291d",
+                "reference": "4208dc19c796bc822e9f7343023266514d36291d",
                 "shasum": ""
             },
             "require": {
@@ -1837,7 +1797,7 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2015-04-27 14:54:55"
+            "time": "2015-05-29 11:42:03"
         },
         {
             "name": "sonata-project/exporter",
@@ -1899,6 +1859,52 @@
                 "xls"
             ],
             "time": "2014-09-11 09:05:40"
+        },
+        {
+            "name": "stephanecollot/datetimepicker-bundle",
+            "version": "dev-master",
+            "target-dir": "SC/DatetimepickerBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stephanecollot/DatetimepickerBundle.git",
+                "reference": "733e4d1896aba5ee7c0b924d0ce25bca179b47ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stephanecollot/DatetimepickerBundle/zipball/733e4d1896aba5ee7c0b924d0ce25bca179b47ef",
+                "reference": "733e4d1896aba5ee7c0b924d0ce25bca179b47ef",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "symfony/framework-bundle": "2.*",
+                "symfony/symfony": "2.*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "SC\\DatetimepickerBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephane Collot"
+                }
+            ],
+            "description": "Symfony bundle for Bootstrap DateTime picker",
+            "keywords": [
+                "bootstrap",
+                "bundle",
+                "datepicker",
+                "picker",
+                "symfony",
+                "timepicker"
+            ],
+            "time": "2015-05-11 20:47:22"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2135,16 +2141,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.6.6",
+            "version": "v2.6.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "48c9e835a877adfb023b8b6d033d9dd14f342b4b"
+                "reference": "b06539573ccf64dd3a62852685f052553d02c5ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/48c9e835a877adfb023b8b6d033d9dd14f342b4b",
-                "reference": "48c9e835a877adfb023b8b6d033d9dd14f342b4b",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/b06539573ccf64dd3a62852685f052553d02c5ba",
+                "reference": "b06539573ccf64dd3a62852685f052553d02c5ba",
                 "shasum": ""
             },
             "require": {
@@ -2235,20 +2241,20 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "The Symfony PHP framework",
-            "homepage": "http://symfony.com",
+            "homepage": "https://symfony.com",
             "keywords": [
                 "framework"
             ],
-            "time": "2015-04-01 16:55:26"
+            "time": "2015-05-29 22:55:07"
         },
         {
             "name": "twig/extensions",
@@ -2360,14 +2366,64 @@
             "time": "2015-04-19 08:30:27"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "sensio/generator-bundle",
+            "version": "v2.5.3",
+            "target-dir": "Sensio/Bundle/GeneratorBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
+                "reference": "e50108c2133ee5c9c484555faed50c17a61221d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/e50108c2133ee5c9c484555faed50c17a61221d3",
+                "reference": "e50108c2133ee5c9c484555faed50c17a61221d3",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/console": "~2.5",
+                "symfony/framework-bundle": "~2.2"
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.2,>=2.2.3",
+                "symfony/doctrine-bridge": "~2.2",
+                "twig/twig": "~1.11"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Sensio\\Bundle\\GeneratorBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "This bundle generates code for you",
+            "time": "2015-03-17 06:36:52"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "doctrine/doctrine-migrations-bundle": 20,
         "doctrine/migrations": 20,
         "sonata-project/admin-bundle": 20,
-        "sonata-project/doctrine-orm-admin-bundle": 20
+        "sonata-project/doctrine-orm-admin-bundle": 20,
+        "stephanecollot/datetimepicker-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

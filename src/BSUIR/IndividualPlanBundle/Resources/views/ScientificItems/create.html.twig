@@ -7,11 +7,7 @@
             {{ form_start(form, {'attr' : { 'class' : 'form-horizontal' }}) }}
             <fieldset>
                 {% for field in form if (field.vars.name != 'create') %}
-                    {% if (field.vars.name == 'startedAt') or (field.vars.name == 'finishedAt') %}
-                        {% set fieldClass = 'date-form-control' %}
-                    {% else %}
-                        {% set fieldClass = 'form-control' %}
-                    {% endif %}
+                    {% set fieldClass = 'form-control' %}
                     {% if field.vars.name != '_token' %}
                         <div class="form-group">
                             {{ form_label(field, null, {'label_attr' : {'class' : 'col-lg-3 control-label' } }) }}

@@ -7,11 +7,7 @@
             {{ form_start(form, {'attr' : { 'class' : 'form-horizontal' }}) }}
             <fieldset>
                 {% for field in form.professors %}
-                    {% if field.vars.name == 'competitionSelected' %}
-                        {% set fieldClass = 'date-form-control' %}
-                    {% else %}
-                        {% set fieldClass = 'form-control' %}
-                    {% endif %}
+                    {% set fieldClass = 'form-control' %}
                     <div class="form-group">
                         {{ form_label(field, null, {'label_attr' : {'class' : 'col-lg-3 control-label' } }) }}
                         <div class="col-lg-9">

@@ -8,6 +8,9 @@
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
+    {% if form is defined %}
+        {{ form_stylesheet(form) }}
+    {% endif %}
 {% endblock %}
 {% block title %}БГУИР{% endblock %}
 {% block body %}
@@ -37,4 +40,7 @@
     %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+    {% if form is defined %}
+        {{ form_javascript(form) }}
+    {% endif %}
 {% endblock %}

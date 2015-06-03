@@ -24,6 +24,8 @@ class AppKernel extends Kernel
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
             new BSUIR\AdminBundle\BSUIRAdminBundle(),
+
+            new SC\DatetimepickerBundle\SCDatetimepickerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

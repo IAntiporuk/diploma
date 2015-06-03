@@ -23,9 +23,14 @@ class ProfessorsType extends AbstractType
             ->add('email', 'email', array('required' => true,))
             ->add('academicTitle', 'text', array('required' => true, 'label' => 'Учёнок звание'))
             ->add('scholasticDegree', 'text', array('required' => true, 'label' => 'Учёная степень'))
-            ->add('competitionSelected', 'date', array(
-                'input'  => 'datetime',
-                'widget' => 'choice',
+            ->add('competitionSelected', 'collot_datetime', array(
+                'pickerOptions' =>
+                    array(
+                        'format' => 'mm/dd/yyyy',
+                        'startView' => 'month',
+                        'minView' => 'month',
+                        'language' => 'ru',
+                    ),
                 'required' => true,
                 'label' => 'Избран по конкурсу',
             ))
