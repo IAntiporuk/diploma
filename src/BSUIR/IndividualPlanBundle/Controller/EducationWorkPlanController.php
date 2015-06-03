@@ -3,6 +3,7 @@
 namespace BSUIR\IndividualPlanBundle\Controller;
 
 use BSUIR\IndividualPlanBundle\Entity\EducationWorkPlan;
+use BSUIR\IndividualPlanBundle\Entity\EducationWorkPlanItems;
 use BSUIR\IndividualPlanBundle\Form\Type\EducationWorkPlanType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -133,14 +134,16 @@ class EducationWorkPlanController extends BaseController
             return $this->redirect($this->generateUrl('individual_plan_index'));
         }
 
-        $ewpi = $this
-            ->getRepository('BSUIRIndividualPlanBundle:EducationWorkPlanItems')
-            ->findBy(array(
+        $ewpiRepo = $this->getRepository('BSUIRIndividualPlanBundle:EducationWorkPlanItems');
+        $ewpi = $ewpiRepo->findBy(array(
                 'educationWorkPlan' => $ewp,
             ));
 
         return $this->render('BSUIRIndividualPlanBundle:EducationWorkPlan:print.html.twig', array(
             'ewpi' => $ewpi,
+            'ewp' => $ewp,
+            'ewpRepo' => $ewpiRepo,
+            'sumFields' => EducationWorkPlanItems::getFieldsForSum(),
         ));
     }
 

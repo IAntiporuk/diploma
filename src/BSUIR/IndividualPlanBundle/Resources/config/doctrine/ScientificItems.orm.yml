@@ -26,10 +26,13 @@ BSUIR\IndividualPlanBundle\Entity\ScientificItems:
             type: datetime
         markFirst:
             type: integer
+            nullable: true
         markSecond:
             type: integer
+            nullable: true
         note:
             type: text
+            nullable: true
         createdAt:
             type: datetime
         updatedAt:

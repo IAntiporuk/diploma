@@ -30,6 +30,7 @@ BSUIR\IndividualPlanBundle\Entity\EducationalMethodicalItems:
             type: integer
         note:
             type: text
+            nullable: true
         createdAt:
             type: datetime
         updatedAt:

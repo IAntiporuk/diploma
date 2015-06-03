@@ -26,8 +26,8 @@ table.table .btn { padding: 0 15px; }
 
 .page-header { margin-top: 21px; }
 
-.select2-selection.select2-selection--single { height: 39px; padding: 5px 5px; border-radius: 0; border-color: #cccccc;  }
-.select2-container--default .select2-selection--single .select2-selection__rendered { color: #6f6f6f; }
-.select2-container--default .select2-selection--single .select2-selection__arrow { top: 7px; }
+.select2-selection.select2-selection { height: 39px; padding: 5px 5px; border-radius: 0; border-color: #cccccc;  }
+.select2-container--default .select2-selection .select2-selection__rendered { color: #6f6f6f; }
+.select2-container--default .select2-selection .select2-selection__arrow { top: 7px; }
 .date-form-control .select2-container { margin-right: 19px; }
 .date-form-control .select2-container:last-child { margin-right: 0; }

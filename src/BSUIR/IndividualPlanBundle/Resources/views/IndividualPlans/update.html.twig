@@ -47,6 +47,9 @@
                         {% for ewp in ewsp %}
                             <p>
                                 <a href="{{ url('education_work_plan_update', {ewp_id: ewp.id}) }}" class="">{{ ewp.stringSemester }} семестр</a>
+                                {% if ewp.educationWorkPlanItems.count %}
+                                    <a href="{{ url('education_work_plan_print', {ewp_id: ewp.id}) }}" target="_blank" class="btn btn-success">Печать</a>
+                                {% endif %}
                                 <a href="{{ url('education_work_plan_update', {ewp_id: ewp.id}) }}" class="btn btn-warning">Просмотреть</a>
                                 <a href="{{ url('education_work_plan_remove', {ewp_id: ewp.id}) }}" class="btn btn-danger">Удалить</a>
                             </p>

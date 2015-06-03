@@ -2,6 +2,7 @@
 
 namespace BSUIR\IndividualPlanBundle\Repository;
 
+use BSUIR\IndividualPlanBundle\Entity\EducationWorkPlan as EWP;
 use BSUIR\IndividualPlanBundle\Entity\Professors;
 use Doctrine\ORM\EntityRepository;
 
@@ -33,5 +34,26 @@ class EducationWorkPlanItems extends EntityRepository
             ))
             ->getQuery()
             ->getOneOrNullResult();
+    }
+
+    public function findSumByField($fieldName, EWP $ewp, $forYear = false)
+    {
+        $qb = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('sum(ewpi.' . $fieldName . ')')
+            ->from($this->getClassName(), 'ewpi')
+            ->innerJoin('ewpi.educationWorkPlan', 'ewp');
+
+        if ($forYear) {
+            $qb->innerJoin('ewp.individualPlan', 'ip')
+                ->where('ip.id = :ip_id')
+                ->setParameter(':ip_id', $ewp->getIndividualPlan()->getId());
+        } else {
+            $qb->where('ewp.id = :ewp_id')
+                ->setParameter('ewp_id', $ewp->getId());
+        }
+
+
+        return $qb->getQuery()->getSingleScalarResult();
     }
 }

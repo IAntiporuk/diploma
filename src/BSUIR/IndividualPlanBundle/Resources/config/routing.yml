@@ -1,6 +1,6 @@
 bsuir_individual_plan_homepage:
     path:     /
-    defaults: { _controller: BSUIRIndividualPlanBundle:Dashboard:index }
+    defaults: { _controller: BSUIRIndividualPlanBundle:IndividualPlans:index }
 
 professors_register:
     path:     /register

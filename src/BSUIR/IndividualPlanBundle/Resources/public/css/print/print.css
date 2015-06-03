@@ -3,3 +3,13 @@
 .print th { text-align: center; padding: 5px; border: 2px solid black; }
 .print td { padding: 5px; border: 1px solid black; border-left: 2px solid; border-right: 2px solid; }
 .print .common-field { margin: 0 20px 20px; font-size: 18px}
+.print .education-plan th { font-size: 11px }
+.print .vertical {
+    height: 135px;
+    width: 30px;
+    -webkit-transform:rotate(270deg);
+    -moz-transform:rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform:rotate(270deg);
+    transform: translate(45px, 55px) rotate(270deg);
+}

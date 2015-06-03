@@ -160,9 +160,63 @@ class EducationWorkPlanItems
      */
     private $groups;
 
+    /**
+     * @var Disciplines
+     */
+    private $discipline;
+
     public function __construct()
     {
         $this->groups = new ArrayCollection();
+    }
+
+    /**
+     * @return array
+     */
+    static public function getFieldsForSum()
+    {
+        return array(
+            'lectures' => 'Лекции',
+            'practicalLessons' => 'Практические занятия',
+            'labs' => 'Лабараторные',
+            'courseWork' => 'Курсовые',
+            'sampleCalculation' => 'Типовые рассчёты',
+            'calculationWork' => 'Расчётные работы',
+            'individualPracticalWork' => 'Индив.практ. работы',
+            'consultations' => 'Консультации',
+            'assessment' => 'Зачёты',
+            'exams' => 'Экзамены',
+            'reviews' => 'Рецензирование к.р.',
+            'controlIndependentWork' => 'УСРС',
+            'educationPractice' => 'Произв.практ. учебная',
+            'technologicalPractice' => 'Произв.практ. технологическая',
+            'prediplomaPractice' => 'Произв.практ. преддипломная',
+            'diplomaDesign' => 'Дипломное проектирование (руков.)',
+            'gakConsultations' => 'ГЭК консультант',
+            'gakWorkCommission' => 'ГЭК раб.комиссия',
+            'gakProducingDepartment' => 'ГЭК выпуск.кафедра',
+            'gakExpert' => 'ГЭК специалист',
+            'controlHighStudents' => 'Руков.студ.2 ступ.выс.обр.',
+            'checkHighStudents' => 'Проверка реф.студ.2 ступ.выс.обр.',
+            'controlGraduate' => 'Руков.аспирантами и т.д.',
+            'dropWeight' => 'Снижение педнагрузки',
+        );
+    }
+
+    /**
+     * @return int
+     */
+    public function getSum()
+    {
+        $fields = self::getFieldsForSum();
+        $result = 0;
+
+        foreach ($fields as $field => $name) {
+            $methodName = 'get' . ucfirst($field);
+            $result += (int) $this->$methodName();
+        }
+
+        return $result;
     }
 
     /**
@@ -854,5 +908,21 @@ class EducationWorkPlanItems
     public function preUpdate()
     {
         $this->updatedAt = new \DateTime();
+    }
+
+    /**
+     * @return Disciplines
+     */
+    public function getDiscipline()
+    {
+        return $this->discipline;
+    }
+
+    /**
+     * @param Disciplines $discipline
+     */
+    public function setDiscipline($discipline)
+    {
+        $this->discipline = $discipline;
     }
 }

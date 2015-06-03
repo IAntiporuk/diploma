@@ -18,6 +18,11 @@ class EducationWorkPlanItemsType extends AbstractType
                 'multiple' => true,
                 'required' => true,
             ))
+            ->add('discipline', 'entity', array(
+                'class' => 'BSUIRIndividualPlanBundle:Disciplines',
+                'property' => 'name',
+                'required' => true,
+            ))
             ->add('lectures', 'text', array('required' => false, 'label' => ''))
             ->add('practicalLessons', 'text', array('required' => false, 'label' => ''))
             ->add('labs', 'text', array('required' => false, 'label' => ''))
