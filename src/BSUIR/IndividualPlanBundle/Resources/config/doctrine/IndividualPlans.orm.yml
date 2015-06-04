@@ -36,11 +36,6 @@ BSUIR\IndividualPlanBundle\Entity\IndividualPlans:
             cascade: ['remove']
             mappedBy: individualPlan
             inversedBy: null
-        educationWorksExecution:
-            targetEntity: EducationWorkExecution
-            cascade: ['remove']
-            mappedBy: individualPlan
-            inversedBy: null
     manyToOne:
         professor:
             targetEntity: Professors

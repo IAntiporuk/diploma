@@ -143,7 +143,36 @@ class EducationWorkPlanController extends BaseController
             'ewpi' => $ewpi,
             'ewp' => $ewp,
             'ewpRepo' => $ewpiRepo,
-            'sumFields' => EducationWorkPlanItems::getFieldsForSum(),
+            'sumFields' => EducationWorkPlanItems::getEducationWorkFields(),
+        ));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function printMonthAction(Request $request)
+    {
+        $ewp = $this->getEWP($request);
+
+        if (null === $ewp) {
+            //TODO: set error message
+            return $this->redirect($this->generateUrl('individual_plan_index'));
+        }
+
+        $ewpiRepo = $this->getRepository('BSUIRIndividualPlanBundle:EducationWorkPlanItems');
+
+        $moths = EducationWorkPlanItems::getMonthsBySemester($ewp->getSemester());
+        $mothsItems = array();
+        foreach ($moths as $key => $month) {
+            $mothsItems[$month] = $ewpiRepo->findByMonth($ewp, $key);
+        }
+
+        return $this->render('BSUIRIndividualPlanBundle:EducationWorkPlan:printMonth.html.twig', array(
+            'mothsItems' => $mothsItems,
+            'ewp' => $ewp,
+            'ewpRepo' => $ewpiRepo,
+            'sumFields' => EducationWorkPlanItems::getEducationWorkFields(),
         ));
     }
 

@@ -22,10 +22,14 @@
             {{ form_widget(form._token) }}
             {{ form_end(form) }}
 
+            {% set ewsp = plan.educationWorksPlan %}
+            {% set emw = plan.educationalMethodicalWork %}
+            {% set sw = plan.scientificWork %}
+            {% set ow = plan.otherWork %}
+            {% set ow = plan.otherWork %}
             <a href="{{ url('individual_plan_print', {ip_id: plan.id}) }}" disabled class="btn btn-success btn-lg btn-block">Распечатать Индивидуальный План</a>
         </div>
         <div class="col-lg-6">
-            {% set ewsp = plan.educationWorksPlan %}
             <div class="panel panel-{% if ewsp.count == 2 %}success{% else %}danger{% endif %}">
                 <div class="panel-heading">
                     <h3 class="panel-title">Учебная Работа(План)</h3>
@@ -57,36 +61,37 @@
                     {% endif %}
                 </div>
             </div>
-            {% set ewep = plan.educationWorksExecution %}
-            <div class="panel panel-{% if ewep.count == 2 %}success{% else %}danger{% endif %}">
+            <div class="panel panel-{% if ewsp.count == 2 %}success{% else %}danger{% endif %}">
                 <div class="panel-heading">
                     <h3 class="panel-title">Учебная Работа(Выполнение)</h3>
                 </div>
                 <div class="panel-body">
-                    {% if ewep.count < 2 %}
-                        {% if ewep.count == 1 %}
+                    {% if ewsp.count < 2 %}
+                        {% if ewsp.count == 1 %}
                             <p>
-                                {#{% if ewp.educationWorkPlanItems.count %}#}
-                                {#<a href="{{ url('education_work_execution_print', {ewp_id: ewp.id}) }}" target="_blank" class="btn btn-success">Печать</a>#}
-                                {#{% endif %}#}
-                                <a href="{{ url('education_work_execution_update', {ewe_id: ewep[0].id}) }}" class="">{{ ewep[0].stringSemester }} семестр</a>
-                                <a href="{{ url('education_work_execution_update', {ewe_id: ewep[0].id}) }}" class="btn btn-warning">Просмотреть</a>
-                                <a href="{{ url('education_work_execution_remove', {ewe_id: ewep[0].id}) }}" class="btn btn-danger">Удалить</a>
+                                <a href="{{ url('education_work_plan_update', {ewp_id: ewsp[0].id}) }}" class="">{{ ewsp[0].stringSemester }} семестр</a>
+                                {% if ewsp[0].educationWorkPlanItems.count %}
+                                    <a href="{{ url('education_work_plan_print_month', {ewp_id: ewsp[0].id}) }}" target="_blank" class="btn btn-success">Печать</a>
+                                {% endif %}
+                                <a href="{{ url('education_work_plan_update', {ewp_id: ewsp[0].id}) }}" class="btn btn-warning">Просмотреть</a>
+                                <a href="{{ url('education_work_plan_remove', {ewp_id: ewsp[0].id}) }}" class="btn btn-danger">Удалить</a>
                             </p>
                         {% endif %}
-                        <p><a href="{{ url('education_work_execution_create', {ip_id: plan.id}) }}" class="btn btn-success">Создать</a></p>
+                        <p><a href="{{ url('education_work_plan_create', {ip_id: plan.id}) }}" class="btn btn-success">Создать</a></p>
                     {% else %}
-                        {% for ewe in ewep %}
+                        {% for ewp in ewsp %}
                             <p>
-                                <a href="{{ url('education_work_execution_update', {ewe_id: ewe.id}) }}" class="">{{ ewe.stringSemester }} семестр</a>
-                                <a href="{{ url('education_work_execution_update', {ewe_id: ewe.id}) }}" class="btn btn-warning">Просмотреть</a>
-                                <a href="{{ url('education_work_execution_remove', {ewe_id: ewe.id}) }}" class="btn btn-danger">Удалить</a>
+                                <a href="{{ url('education_work_plan_update', {ewp_id: ewp.id}) }}" class="">{{ ewp.stringSemester }} семестр</a>
+                                {% if ewp.educationWorkPlanItems.count %}
+                                    <a href="{{ url('education_work_plan_print_month', {ewp_id: ewp.id}) }}" target="_blank" class="btn btn-success">Печать</a>
+                                {% endif %}
+                                <a href="{{ url('education_work_plan_update', {ewp_id: ewp.id}) }}" class="btn btn-warning">Просмотреть</a>
+                                <a href="{{ url('education_work_plan_remove', {ewp_id: ewp.id}) }}" class="btn btn-danger">Удалить</a>
                             </p>
                         {% endfor %}
                     {% endif %}
                 </div>
             </div>
-            {% set emw = plan.educationalMethodicalWork %}
             <div class="panel panel-{% if emw %}success{% else %}danger{% endif %}">
                 <div class="panel-heading">
                     <h3 class="panel-title">Учебно-методическая и Организационно-методическая Работа</h3>
@@ -103,7 +108,6 @@
                     {% endif %}
                 </div>
             </div>
-            {% set sw = plan.scientificWork %}
             <div class="panel panel-{% if sw %}success{% else %}danger{% endif %}">
                 <div class="panel-heading">
                     <h3 class="panel-title">Научно-исследовательская Работа</h3>
@@ -120,7 +124,6 @@
                     {% endif %}
                 </div>
             </div>
-            {% set ow = plan.otherWork %}
             <div class="panel panel-{% if ow %}success{% else %}danger{% endif %}">
                 <div class="panel-heading">
                     <h3 class="panel-title">Участие в работе советов, комиссий, комитетов, руководство НИРС, работа в студенческих группах и др.</h3>

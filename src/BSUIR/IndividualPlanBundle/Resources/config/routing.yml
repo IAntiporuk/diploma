@@ -202,7 +202,13 @@ education_work_plan_remove:
         ewp_id: \d+
 education_work_plan_print:
     path: /education-work-plan/print/{ewp_id}
-    defaults: { _controller: BSUIRIndividualPlanBundle:EducationWorkPlan:print }
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationWorkPlan:print}
+    methods:  [GET]
+    requirements:
+        ewp_id: \d+
+education_work_plan_print_month:
+    path: /education-work-plan/print-month/{ewp_id}
+    defaults: { _controller: BSUIRIndividualPlanBundle:EducationWorkPlan:printMonth }
     methods:  [GET]
     requirements:
         ewp_id: \d+
@@ -222,12 +228,6 @@ education_work_plan_items_update:
 education_work_plan_items_remove:
     path: /education-work-plan-items/remove/{ewpi_id}
     defaults: { _controller: BSUIRIndividualPlanBundle:EducationWorkPlanItems:remove }
-    methods:  [GET]
-    requirements:
-        ewpi_id: \d+
-education_work_plan_items_print:
-    path: /education-work-plan-items/print/{ewpi_id}
-    defaults: { _controller: BSUIRIndividualPlanBundle:EducationWorkPlanItems:print }
     methods:  [GET]
     requirements:
         ewpi_id: \d+

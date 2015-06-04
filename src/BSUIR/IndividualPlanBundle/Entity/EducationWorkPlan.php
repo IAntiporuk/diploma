@@ -40,6 +40,10 @@ class EducationWorkPlan
      */
     private $educationWorkPlanItems;
 
+    const AUTUMN_SEMESTER = 1;
+
+    const SPRING_SEMESTER = 2;
+
     public function __construct()
     {
         $this->educationWorkPlanItems = new ArrayCollection();
@@ -67,8 +71,8 @@ class EducationWorkPlan
     public static function getSemesters()
     {
         return array(
-            1 => 'Осенний',
-            2 => 'Весенний',
+            self::AUTUMN_SEMESTER => 'Осенний',
+            self::SPRING_SEMESTER => 'Весенний',
         );
     }
 

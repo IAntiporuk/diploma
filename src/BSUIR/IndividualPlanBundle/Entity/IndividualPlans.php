@@ -55,15 +55,9 @@ class IndividualPlans
      */
     private $educationWorksPlan;
 
-    /**
-     * @var EducationWorkExecution
-     */
-    private $educationWorksExecution;
-
     public function __construct()
     {
         $this->educationWorksPlan = new ArrayCollection();
-        $this->educationWorksExecution = new ArrayCollection();
     }
 
     /**
@@ -216,22 +210,6 @@ class IndividualPlans
     public function setEducationWorksPlan($educationWorksPlan)
     {
         $this->educationWorksPlan = $educationWorksPlan;
-    }
-
-    /**
-     * @return EducationWorkExecution
-     */
-    public function getEducationWorksExecution()
-    {
-        return $this->educationWorksExecution;
-    }
-
-    /**
-     * @param EducationWorkExecution $educationWorksExecution
-     */
-    public function setEducationWorksExecution($educationWorksExecution)
-    {
-        $this->educationWorksExecution = $educationWorksExecution;
     }
 
     /**

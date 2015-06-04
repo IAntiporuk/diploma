@@ -1,0 +1,105 @@
+{% extends 'BSUIRIndividualPlanBundle::base-print.html.twig' %}
+{% block title %}Печать Учебная Работа(План){% endblock %}
+{% block print_content %}
+    {% if mothsItems %}
+        <h1>Учебная Работа(выполнение) {{ ewp.stringSemester }} семестр</h1>
+        <table class="none-width education-plan">
+            <thead>
+            <tr>
+                <th>№№ п-п</th>
+                <th>Название дисциплины</th>
+                <th><div class="vertical">Факультет</div></th>
+                <th><div class="vertical">Специальность</div></th>
+                <th>№№ г-г</th>
+                {% for field, name in sumFields %}
+                    <th><div class="vertical">{{ name }}</div></th>
+                {% endfor %}
+                <th><div class="vertical">Всего запланировано</div></th>
+                <th><div class="vertical">Фактически выполнено</div></th>
+                <th>Примечание</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% set emptyRowLength = sumFields|length + 2 %}
+            {% set i = 1 %}
+            {% for month, items in mothsItems %}
+                <tr>
+                    <td></td>
+                    <td>{{ month }}</td>
+                    {% for i in 0..emptyRowLength + 3 %}
+                        <td></td>
+                    {% endfor %}
+                </tr>
+                {% for item in items %}
+                    {% set monthsCount = item.months|length %}
+                    {% set specialty = item.groups[0].specialty %}
+                    <tr>
+                        <td>{{ i }}</td>
+                        <td>{{ item.discipline.name }}</td>
+                        <td>{{ specialty.faculty.name }}</td>
+                        <td>{{ specialty.name }}</td>
+                        <td>{{ item.groupsString }}</td>
+                        {% for field, name in sumFields %}
+                            {% set val = attribute(item, field)/monthsCount %}
+                            {% if attribute(item, field) % monthsCount == 0 %}
+                                <td>{{ val }}</td>
+                            {% else %}
+                                <td>{{ val|number_format(1) }}</td>
+                            {% endif %}
+                        {% endfor %}
+                        <td>{{ item.sum }}</td>
+                        <td></td>
+                        <td>{{ item.note }}</td>
+                    </tr>
+                    {% set i = i + 1 %}
+                {% endfor %}
+
+            {% endfor %}
+            <tr>
+                <td colspan="4">Всего учебной работы за {{ ewp.semester }} семестр</td>
+                <td>запланировано</td>
+                {% set sumPlan = 0 %}
+                {% for field, name in sumFields %}
+                    {% set planVal = ewpRepo.findSumByField(field, ewp) %}
+                    {% set sumPlan = sumPlan + planVal %}
+                    <td>{{ planVal }}</td>
+                {% endfor %}
+                <td>{{ sumPlan }}</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="4"></td>
+                <td>выполнено</td>
+                {% for i in 0..emptyRowLength %}
+                    <td></td>
+                {% endfor %}
+            </tr>
+            {# if autumn semester#}
+            {% if ewp.semester == 2 %}
+                <tr>
+                    <td colspan="4">Всего учебной работы за год</td>
+                    <td>запланировано</td>
+                    {% set sumYear = 0 %}
+                    {% for field, name in sumFields %}
+                        {% set yearVal = ewpRepo.findSumByField(field, ewp, true) %}
+                        {% set sumYear = sumYear + yearVal %}
+                        <td>{{ yearVal }}</td>
+                    {% endfor %}
+                    <td>{{ sumYear }}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                    <td>выполнено</td>
+                    {% for i in 0..emptyRowLength %}
+                        <td></td>
+                    {% endfor %}
+                </tr>
+            {% endif %}
+            <tr></tr>
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

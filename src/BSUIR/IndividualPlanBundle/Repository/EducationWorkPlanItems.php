@@ -2,7 +2,7 @@
 
 namespace BSUIR\IndividualPlanBundle\Repository;
 
-use BSUIR\IndividualPlanBundle\Entity\EducationWorkPlan as EWP;
+use BSUIR\IndividualPlanBundle\Entity\EducationWorkPlan;
 use BSUIR\IndividualPlanBundle\Entity\Professors;
 use Doctrine\ORM\EntityRepository;
 
@@ -36,7 +36,13 @@ class EducationWorkPlanItems extends EntityRepository
             ->getOneOrNullResult();
     }
 
-    public function findSumByField($fieldName, EWP $ewp, $forYear = false)
+    /**
+     * @param $fieldName
+     * @param EducationWorkPlan $ewp
+     * @param bool $forYear
+     * @return mixed
+     */
+    public function findSumByField($fieldName, EducationWorkPlan $ewp, $forYear = false)
     {
         $qb = $this->getEntityManager()
             ->createQueryBuilder()
@@ -56,4 +62,23 @@ class EducationWorkPlanItems extends EntityRepository
 
         return $qb->getQuery()->getSingleScalarResult();
     }
+
+    public function findByMonth(EducationWorkPlan $ewp, $month)
+    {
+        $qb = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('ewpi')
+            ->from($this->getClassName(), 'ewpi')
+            ->innerJoin('ewpi.educationWorkPlan', 'ewp')
+            ->where('ewp.id = :ewp_id')
+            ->andWhere('ewpi.months LIKE :month')
+            ->setParameters(array(
+                ':ewp_id' => $ewp->getId(),
+                ':month' => '%' . $month . '_%',
+            ));
+
+        return $qb->getQuery()->getResult();
+    }
+
+
 }

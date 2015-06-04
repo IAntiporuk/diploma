@@ -165,6 +165,11 @@ class EducationWorkPlanItems
      */
     private $discipline;
 
+    /**
+     * @var string
+     */
+    private $months;
+
     public function __construct()
     {
         $this->groups = new ArrayCollection();
@@ -173,7 +178,7 @@ class EducationWorkPlanItems
     /**
      * @return array
      */
-    static public function getFieldsForSum()
+    static public function getEducationWorkFields()
     {
         return array(
             'lectures' => 'Лекции',
@@ -203,12 +208,53 @@ class EducationWorkPlanItems
         );
     }
 
+    static public function getEducationWorkField($fieldName)
+    {
+        return self::getEducationWorkFields()[$fieldName];
+    }
+
+    /**
+     * @param $semester
+     * @return mixed
+     */
+    Static public function getMonthsBySemester($semester)
+    {
+        $months = array();
+
+        if ($semester == EducationWorkPlan::AUTUMN_SEMESTER) {
+            $months = array_slice(self::getAllMonths(), 0, 5, true);
+        } else if($semester == EducationWorkPlan::SPRING_SEMESTER) {
+            $months = array_slice(self::getAllMonths(), 5, null, true);
+        }
+
+        return $months;
+    }
+
+    /**
+     * @return array
+     */
+    static public function getAllMonths()
+    {
+        return array(
+            1 => 'Сентябрь',
+            2 => 'Октябрь',
+            3 => 'Ноябрь',
+            4 => 'Декабрь',
+            5 => 'Январь',
+            6 => 'Февраль',
+            7 => 'Март',
+            8 => 'Апрель',
+            9 => 'Май',
+            10 => 'Июнь',
+        );
+    }
+
     /**
      * @return int
      */
     public function getSum()
     {
-        $fields = self::getFieldsForSum();
+        $fields = self::getEducationWorkFields();
         $result = 0;
 
         foreach ($fields as $field => $name) {
@@ -924,5 +970,24 @@ class EducationWorkPlanItems
     public function setDiscipline($discipline)
     {
         $this->discipline = $discipline;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMonths()
+    {
+        $month = explode('_', $this->months);
+        array_pop($month);
+
+        return $month;
+    }
+
+    /**
+     * @param string $months
+     */
+    public function setMonths($months)
+    {
+        $this->months = implode('_', $months) . '_';
     }
 }

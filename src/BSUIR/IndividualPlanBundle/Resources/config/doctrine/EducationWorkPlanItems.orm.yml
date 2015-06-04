@@ -39,6 +39,8 @@ BSUIR\IndividualPlanBundle\Entity\EducationWorkPlanItems:
             type: datetime
         updatedAt:
             type: datetime
+        months:
+            type: string
         lectures:
             type: integer
             nullable: true

@@ -27,7 +27,9 @@ class EducationWorkPlanItemsController extends BaseController
         }
 
         $ewpi = new EducationWorkPlanItems();
-        $form = $this->createForm(new EducationWorkPlanItemsType(), $ewpi);
+        $form = $this->createForm(new EducationWorkPlanItemsType(), $ewpi, array(
+            'semester' => $ewp->getSemester(),
+        ));
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -64,7 +66,9 @@ class EducationWorkPlanItemsController extends BaseController
             return $this->redirect($this->generateUrl('individual_plan_index'));
         }
 
-        $form = $this->createForm(new EducationWorkPlanItemsType(), $ewpi);
+        $form = $this->createForm(new EducationWorkPlanItemsType(), $ewpi, array(
+            'semester' => $ewpi->getEducationWorkPlan()->getSemester(),
+        ));
         $form->handleRequest($request);
 
         if ($form->isValid()) {

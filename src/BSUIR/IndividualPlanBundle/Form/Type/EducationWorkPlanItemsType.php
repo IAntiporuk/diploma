@@ -3,6 +3,7 @@
 namespace BSUIR\IndividualPlanBundle\Form\Type;
 
 use BSUIR\IndividualPlanBundle\Entity\EducationWorkPlan;
+use BSUIR\IndividualPlanBundle\Entity\EducationWorkPlanItems;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -22,6 +23,11 @@ class EducationWorkPlanItemsType extends AbstractType
                 'class' => 'BSUIRIndividualPlanBundle:Disciplines',
                 'property' => 'name',
                 'required' => true,
+            ))
+            ->add('months', 'choice', array(
+                'required' => true,
+                'choices' => EducationWorkPlanItems::getMonthsBySemester($options['semester']),
+                'multiple' => true,
             ))
             ->add('lectures', 'text', array('required' => false, 'label' => ''))
             ->add('practicalLessons', 'text', array('required' => false, 'label' => ''))
@@ -55,6 +61,8 @@ class EducationWorkPlanItemsType extends AbstractType
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        $resolver->setDefined('semester');
+
         $resolver->setDefaults(array(
             'data_class'         => 'BSUIR\IndividualPlanBundle\Entity\EducationWorkPlanItems',
             'validation_groups'  => array('educationWorkPlanItems')
