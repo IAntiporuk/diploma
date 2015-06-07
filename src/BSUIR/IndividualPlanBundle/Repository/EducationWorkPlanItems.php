@@ -2,7 +2,7 @@
 
 namespace BSUIR\IndividualPlanBundle\Repository;
 
-use BSUIR\IndividualPlanBundle\Entity\EducationWorkPlan;
+use BSUIR\IndividualPlanBundle\Entity\EducationWorkPlan as EWP;
 use BSUIR\IndividualPlanBundle\Entity\Professors;
 use Doctrine\ORM\EntityRepository;
 
@@ -14,7 +14,7 @@ class EducationWorkPlanItems extends EntityRepository
     /**
      * @param $id
      * @param Professors $professors
-     * @return \BSUIR\IndividualPlanBundle\Entity\EducationWorkPlanItems
+     * @return mixed
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function findOneByIdAndProfessor($id, Professors $professors)
@@ -38,11 +38,11 @@ class EducationWorkPlanItems extends EntityRepository
 
     /**
      * @param $fieldName
-     * @param EducationWorkPlan $ewp
+     * @param EWP $ewp
      * @param bool $forYear
      * @return mixed
      */
-    public function findSumByField($fieldName, EducationWorkPlan $ewp, $forYear = false)
+    public function findSumByField($fieldName, EWP $ewp, $forYear = false)
     {
         $qb = $this->getEntityManager()
             ->createQueryBuilder()
@@ -63,7 +63,12 @@ class EducationWorkPlanItems extends EntityRepository
         return $qb->getQuery()->getSingleScalarResult();
     }
 
-    public function findByMonth(EducationWorkPlan $ewp, $month)
+    /**
+     * @param EWP $ewp
+     * @param $month
+     * @return array
+     */
+    public function findByMonth(EWP $ewp, $month)
     {
         $qb = $this->getEntityManager()
             ->createQueryBuilder()

@@ -41,13 +41,13 @@ class EducationWorkPlanController extends BaseController
                 $em->persist($educationWorkPlan);
                 $em->persist($individualPlan);
                 $em->flush();
-            } catch (\Exception $e) {
-                die($e->getMessage());
-            }
 
-            return $this->redirect($this->generateUrl('education_work_plan_update', array(
-                'ewp_id' => $educationWorkPlan->getId(),
-            )));
+                return $this->redirect($this->generateUrl('education_work_plan_update', array(
+                    'ewp_id' => $educationWorkPlan->getId(),
+                )));
+            } catch (\Exception $e) {
+                $this->get('session')->getFlashBag()->set('error', 'Выберете другой семестр.');
+            }
         }
 
         return $this->render('BSUIRIndividualPlanBundle:EducationWorkPlan:create.html.twig', array(
@@ -77,7 +77,7 @@ class EducationWorkPlanController extends BaseController
                 $em->persist($ewp);
                 $em->flush();
             } catch (\Exception $e) {
-                die($e->getMessage());
+                $this->get('session')->getFlashBag()->set('error', 'Выберете другой семестр.');
             }
         }
 
