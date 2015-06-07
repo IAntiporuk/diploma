@@ -26,8 +26,9 @@
             {% set emw = plan.educationalMethodicalWork %}
             {% set sw = plan.scientificWork %}
             {% set ow = plan.otherWork %}
-            {% set ow = plan.otherWork %}
-            <a href="{{ url('individual_plan_print', {ip_id: plan.id}) }}" disabled class="btn btn-success btn-lg btn-block">Распечатать Индивидуальный План</a>
+            {% if ewsp and emw and sw and ow %}
+                <a id="print-all" class="btn btn-success btn-lg btn-block">Распечатать Индивидуальный План</a>
+            {% endif %}
         </div>
         <div class="col-lg-6">
             <div class="panel panel-{% if ewsp.count == 2 %}success{% else %}danger{% endif %}">
@@ -40,7 +41,7 @@
                             <p>
                                 <a href="{{ url('education_work_plan_update', {ewp_id: ewsp[0].id}) }}" class="">{{ ewsp[0].stringSemester }} семестр</a>
                                 {% if ewsp[0].educationWorkPlanItems.count %}
-                                    <a href="{{ url('education_work_plan_print', {ewp_id: ewsp[0].id}) }}" target="_blank" class="btn btn-success">Печать</a>
+                                    <a href="{{ url('education_work_plan_print', {ewp_id: ewsp[0].id}) }}" target="_blank" class="btn print btn-success">Печать</a>
                                 {% endif %}
                                 <a href="{{ url('education_work_plan_update', {ewp_id: ewsp[0].id}) }}" class="btn btn-warning">Просмотреть</a>
                                 <a href="{{ url('education_work_plan_remove', {ewp_id: ewsp[0].id}) }}" class="btn btn-danger">Удалить</a>
@@ -52,7 +53,7 @@
                             <p>
                                 <a href="{{ url('education_work_plan_update', {ewp_id: ewp.id}) }}" class="">{{ ewp.stringSemester }} семестр</a>
                                 {% if ewp.educationWorkPlanItems.count %}
-                                    <a href="{{ url('education_work_plan_print', {ewp_id: ewp.id}) }}" target="_blank" class="btn btn-success">Печать</a>
+                                    <a href="{{ url('education_work_plan_print', {ewp_id: ewp.id}) }}" target="_blank" class="btn print btn-success">Печать</a>
                                 {% endif %}
                                 <a href="{{ url('education_work_plan_update', {ewp_id: ewp.id}) }}" class="btn btn-warning">Просмотреть</a>
                                 <a href="{{ url('education_work_plan_remove', {ewp_id: ewp.id}) }}" class="btn btn-danger">Удалить</a>
@@ -71,7 +72,7 @@
                             <p>
                                 <a href="{{ url('education_work_plan_update', {ewp_id: ewsp[0].id}) }}" class="">{{ ewsp[0].stringSemester }} семестр</a>
                                 {% if ewsp[0].educationWorkPlanItems.count %}
-                                    <a href="{{ url('education_work_plan_print_month', {ewp_id: ewsp[0].id}) }}" target="_blank" class="btn btn-success">Печать</a>
+                                    <a href="{{ url('education_work_plan_print_month', {ewp_id: ewsp[0].id}) }}" target="_blank" class="btn print btn-success">Печать</a>
                                 {% endif %}
                                 <a href="{{ url('education_work_plan_update', {ewp_id: ewsp[0].id}) }}" class="btn btn-warning">Просмотреть</a>
                                 <a href="{{ url('education_work_plan_remove', {ewp_id: ewsp[0].id}) }}" class="btn btn-danger">Удалить</a>
@@ -83,7 +84,7 @@
                             <p>
                                 <a href="{{ url('education_work_plan_update', {ewp_id: ewp.id}) }}" class="">{{ ewp.stringSemester }} семестр</a>
                                 {% if ewp.educationWorkPlanItems.count %}
-                                    <a href="{{ url('education_work_plan_print_month', {ewp_id: ewp.id}) }}" target="_blank" class="btn btn-success">Печать</a>
+                                    <a href="{{ url('education_work_plan_print_month', {ewp_id: ewp.id}) }}" target="_blank" class="btn print btn-success">Печать</a>
                                 {% endif %}
                                 <a href="{{ url('education_work_plan_update', {ewp_id: ewp.id}) }}" class="btn btn-warning">Просмотреть</a>
                                 <a href="{{ url('education_work_plan_remove', {ewp_id: ewp.id}) }}" class="btn btn-danger">Удалить</a>
@@ -99,7 +100,7 @@
                 <div class="panel-body">
                     {% if emw %}
                         {% if emw.educationalMethodicalItems.count %}
-                            <a href="{{ url('educational_methodical_work_print', {emw_id: emw.id}) }}" target="_blank" class="btn btn-success">Печать</a>
+                            <a href="{{ url('educational_methodical_work_print', {emw_id: emw.id}) }}" target="_blank" class="btn print btn-success">Печать</a>
                         {% endif %}
                         <a href="{{ url('educational_methodical_work_update', {emw_id: emw.id}) }}" class="btn btn-warning">Просмотреть</a>
                         <a href="{{ url('educational_methodical_work_remove', {emw_id: emw.id}) }}" class="btn btn-danger">Удалить</a>
@@ -115,7 +116,7 @@
                 <div class="panel-body">
                     {% if sw %}
                         {% if sw.scientificItems.count %}
-                            <a href="{{ url('scientific_work_print', {sw_id: sw.id}) }}" target="_blank" class="btn btn-success">Печать</a>
+                            <a href="{{ url('scientific_work_print', {sw_id: sw.id}) }}" target="_blank" class="btn print btn-success">Печать</a>
                         {% endif %}
                         <a href="{{ url('scientific_work_update', {sw_id: sw.id}) }}" class="btn btn-warning">Просмотреть</a>
                         <a href="{{ url('scientific_work_remove', {sw_id: sw.id}) }}" class="btn btn-danger">Удалить</a>
@@ -131,7 +132,7 @@
                 <div class="panel-body">
                     {% if ow %}
                         {% if ow.otherItems.count %}
-                            <a href="{{ url('other_work_print', {ow_id: ow.id}) }}" target="_blank" class="btn btn-success">Печать</a>
+                            <a href="{{ url('other_work_print', {ow_id: ow.id}) }}" target="_blank" class="btn print btn-success">Печать</a>
                         {% endif %}
                         <a href="{{ url('other_work_update', {ow_id: ow.id}) }}" class="btn btn-warning">Просмотреть</a>
                         <a href="{{ url('other_work_remove', {ow_id: ow.id}) }}" class="btn btn-danger">Удалить</a>

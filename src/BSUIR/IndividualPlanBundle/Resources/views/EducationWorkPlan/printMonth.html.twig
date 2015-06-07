@@ -33,6 +33,7 @@
                 {% for item in items %}
                     {% set monthsCount = item.months|length %}
                     {% set specialty = item.groups[0].specialty %}
+                    {% set sum = 0 %}
                     <tr>
                         <td>{{ i }}</td>
                         <td>{{ item.discipline.name }}</td>
@@ -41,13 +42,14 @@
                         <td>{{ item.groupsString }}</td>
                         {% for field, name in sumFields %}
                             {% set val = attribute(item, field)/monthsCount %}
+                            {% set sum = sum + val %}
                             {% if attribute(item, field) % monthsCount == 0 %}
                                 <td>{{ val }}</td>
                             {% else %}
                                 <td>{{ val|number_format(1) }}</td>
                             {% endif %}
                         {% endfor %}
-                        <td>{{ item.sum }}</td>
+                        <td>{{ sum }}</td>
                         <td></td>
                         <td>{{ item.note }}</td>
                     </tr>

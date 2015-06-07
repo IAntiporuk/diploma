@@ -18,42 +18,45 @@ class EducationWorkPlanItemsType extends AbstractType
                 'property' => 'name',
                 'multiple' => true,
                 'required' => true,
+                'label' => 'Группы',
             ))
             ->add('discipline', 'entity', array(
                 'class' => 'BSUIRIndividualPlanBundle:Disciplines',
                 'property' => 'name',
                 'required' => true,
+                'label' => 'Название дисциплины'
             ))
             ->add('months', 'choice', array(
                 'required' => true,
                 'choices' => EducationWorkPlanItems::getMonthsBySemester($options['semester']),
                 'multiple' => true,
+                'label' => 'Месяцы',
             ))
-            ->add('lectures', 'text', array('required' => false, 'label' => ''))
-            ->add('practicalLessons', 'text', array('required' => false, 'label' => ''))
-            ->add('labs', 'text', array('required' => false, 'label' => ''))
-            ->add('courseWork', 'text', array('required' => false, 'label' => ''))
-            ->add('sampleCalculation', 'text', array('required' => false, 'label' => ''))
-            ->add('calculationWork', 'text', array('required' => false, 'label' => ''))
-            ->add('individualPracticalWork', 'text', array('required' => false, 'label' => ''))
-            ->add('consultations', 'text', array('required' => false, 'label' => ''))
-            ->add('assessment', 'text', array('required' => false, 'label' => ''))
-            ->add('exams', 'text', array('required' => false, 'label' => ''))
-            ->add('reviews', 'text', array('required' => false, 'label' => ''))
-            ->add('controlIndependentWork', 'text', array('required' => false, 'label' => ''))
-            ->add('educationPractice', 'text', array('required' => false, 'label' => ''))
-            ->add('technologicalPractice', 'text', array('required' => false, 'label' => ''))
-            ->add('prediplomaPractice', 'text', array('required' => false, 'label' => ''))
-            ->add('diplomaDesign', 'text', array('required' => false, 'label' => ''))
-            ->add('gakConsultations', 'text', array('required' => false, 'label' => ''))
-            ->add('gakWorkCommission', 'text', array('required' => false, 'label' => ''))
-            ->add('gakProducingDepartment', 'text', array('required' => false, 'label' => ''))
-            ->add('gakExpert', 'text', array('required' => false, 'label' => ''))
-            ->add('controlHighStudents', 'text', array('required' => false, 'label' => ''))
-            ->add('checkHighStudents', 'text', array('required' => false, 'label' => ''))
-            ->add('controlGraduate', 'text', array('required' => false, 'label' => ''))
-            ->add('dropWeight', 'text', array('required' => false, 'label' => ''))
-            ->add('note', 'textarea', array('required' => false, 'label' => ''))
+            ->add('lectures', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('lectures')))
+            ->add('practicalLessons', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('practicalLessons')))
+            ->add('labs', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('labs')))
+            ->add('courseWork', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('courseWork')))
+            ->add('sampleCalculation', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('sampleCalculation')))
+            ->add('calculationWork', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('calculationWork')))
+            ->add('individualPracticalWork', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('individualPracticalWork')))
+            ->add('consultations', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('consultations')))
+            ->add('assessment', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('assessment')))
+            ->add('exams', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('exams')))
+            ->add('reviews', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('reviews')))
+            ->add('controlIndependentWork', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('controlIndependentWork')))
+            ->add('educationPractice', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('educationPractice')))
+            ->add('technologicalPractice', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('technologicalPractice')))
+            ->add('prediplomaPractice', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('prediplomaPractice')))
+            ->add('diplomaDesign', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('diplomaDesign')))
+            ->add('gakConsultations', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('gakConsultations')))
+            ->add('gakWorkCommission', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('gakWorkCommission')))
+            ->add('gakProducingDepartment', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('gakProducingDepartment')))
+            ->add('gakExpert', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('gakExpert')))
+            ->add('controlHighStudents', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('controlHighStudents')))
+            ->add('checkHighStudents', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('checkHighStudents')))
+            ->add('controlGraduate', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('controlGraduate')))
+            ->add('dropWeight', 'text', array('required' => false, 'label' => EducationWorkPlanItems::getEducationWorkField('dropWeight')))
+            ->add('note', 'textarea', array('required' => false, 'label' => 'Примечание'))
             ->add('create', 'submit');
 
         return true;

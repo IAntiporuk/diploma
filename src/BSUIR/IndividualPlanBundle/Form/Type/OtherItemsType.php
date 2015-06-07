@@ -13,9 +13,11 @@ class OtherItemsType extends AbstractType
         $builder
             ->add('work', 'text', array(
                 'required' => true,
+                'label' => 'Выполняемая работа',
             ))
             ->add('mark', 'text', array(
                 'required' => false,
+                'label' => 'Отметка о выполнении',
             ))
             ->add('create', 'submit', array(
                 'label' => 'Создать'

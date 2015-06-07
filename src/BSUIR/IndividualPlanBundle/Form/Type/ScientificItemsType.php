@@ -13,7 +13,7 @@ class ScientificItemsType extends AbstractType
         $builder
             ->add('workName', 'text', array(
                 'required' => true,
-                'label' => 'Название этапа',
+                'label' => 'Название этапов',
             ))
             ->add('startedAt', 'collot_datetime', array(
                 'label' => 'Начало',

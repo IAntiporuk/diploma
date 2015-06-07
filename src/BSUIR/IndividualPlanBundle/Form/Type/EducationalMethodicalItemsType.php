@@ -13,25 +13,41 @@ class EducationalMethodicalItemsType extends AbstractType
         $builder
             ->add('workName', 'text', array(
                 'required' => true,
+                'label' => 'Название работ'
             ))
-            ->add('startedAt', 'date', array(
-                'input'  => 'datetime',
-                'widget' => 'choice',
-                'required' => false,
+            ->add('startedAt', 'collot_datetime', array(
+                'label' => 'Начало',
+                'pickerOptions' =>
+                    array(
+                        'format' => 'mm/dd/yyyy',
+                        'startView' => 'month',
+                        'minView' => 'month',
+                        'language' => 'ru',
+                    ),
+                'required' => true,
             ))
-            ->add('finishedAt', 'date', array(
-                'input'  => 'datetime',
-                'widget' => 'choice',
-                'required' => false,
+            ->add('finishedAt', 'collot_datetime', array(
+                'label' => 'Конец',
+                'pickerOptions' =>
+                    array(
+                        'format' => 'mm/dd/yyyy',
+                        'startView' => 'month',
+                        'minView' => 'month',
+                        'language' => 'ru',
+                    ),
+                'required' => true,
             ))
             ->add('markFirst', 'text', array(
                 'required' => false,
+                'label' => 'Отметка зав. кафедры о выполнении на 30.12',
             ))
             ->add('markSecond', 'text', array(
                 'required' => false,
+                'label' => 'Отметка зав. кафедры о выполнении на 01.07',
             ))
             ->add('note', 'textarea', array(
                 'required' => false,
+                'label' => 'Примечаниу',
             ))
             ->add('create', 'submit', array(
                 'label' => 'Создать'
