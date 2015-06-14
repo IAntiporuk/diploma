@@ -20,6 +20,8 @@
                 {% if app.user %}
                     <li><p>Добро пожаловать, {{ app.user.firstName }} {{ app.user.lastName }}</p></li>
                     <li><p>|</p></li>
+                    <li><a href="{{ url('professors_edit') }}">Редактировать профиль</a></li>
+                    <li><p>|</p></li>
                     <li><a href="{{ url('professors_logout') }}">Выйти</a></li>
                 {% else %}
                     <li><a href="{{ url('professors_login') }}">Войти</a></li>

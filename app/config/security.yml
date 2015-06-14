@@ -23,7 +23,7 @@ security:
             pattern: ^/
             logout:
                 path: professors_logout
-                target: %bsuir.home_page%
+                target: professors_login
             form_login:
                 login_path: professors_login
                 check_path: professors_login_check

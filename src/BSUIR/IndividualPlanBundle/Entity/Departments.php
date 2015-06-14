@@ -121,4 +121,27 @@ class Departments
         $this->disciplines = $disciplines;
     }
 
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
+    /**
+     * LifecycleCallbacks
+     */
+    public function prePersist()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
+     * LifecycleCallbacks
+     */
+    public function preUpdate()
+    {
+        $this->updatedAt = new \DateTime();
+    }
 }

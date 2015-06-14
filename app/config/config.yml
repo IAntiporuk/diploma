@@ -71,3 +71,11 @@ swiftmailer:
 
 sc_datetimepicker:
     picker: ~
+
+sonata_admin:
+    title:      BSUIR Admin Panel
+    options:
+        html5_validate: true      # use html5 validation
+        confirm_exit:   true      # enabled confirmation when quitting with unsaved changes
+        use_select2:    true      # enable select2
+        use_icheck:     true      # enable iCheck

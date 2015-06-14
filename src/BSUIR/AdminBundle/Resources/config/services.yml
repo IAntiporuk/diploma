@@ -1,4 +1,52 @@
 services:
-#    bsuir_admin.example:
-#        class: BSUIR\AdminBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    sonata.admin.faculties:
+        class: BSUIR\AdminBundle\Admin\Faculties
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Факультеты" }
+        arguments:
+            - ~
+            - BSUIR\IndividualPlanBundle\Entity\Faculties
+            - ~
+        calls:
+            - [ setTranslationDomain, [BSUIRIndividualPlanBundle]]
+    sonata.admin.departments:
+        class: BSUIR\AdminBundle\Admin\Departments
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Кафедры" }
+        arguments:
+            - ~
+            - BSUIR\IndividualPlanBundle\Entity\Departments
+            - ~
+        calls:
+            - [ setTranslationDomain, [BSUIRIndividualPlanBundle]]
+    sonata.admin.disciplines:
+        class: BSUIR\AdminBundle\Admin\Disciplines
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Дисциплины" }
+        arguments:
+            - ~
+            - BSUIR\IndividualPlanBundle\Entity\Disciplines
+            - ~
+        calls:
+            - [ setTranslationDomain, [BSUIRIndividualPlanBundle]]
+    sonata.admin.specialty:
+            class: BSUIR\AdminBundle\Admin\Specialty
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: "Content", label: "Специальности" }
+            arguments:
+                - ~
+                - BSUIR\IndividualPlanBundle\Entity\Specialty
+                - ~
+            calls:
+                - [ setTranslationDomain, [BSUIRIndividualPlanBundle]]
+    sonata.admin.groups:
+        class: BSUIR\AdminBundle\Admin\Groups
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Группы" }
+        arguments:
+            - ~
+            - BSUIR\IndividualPlanBundle\Entity\Groups
+            - ~
+        calls:
+            - [ setTranslationDomain, [BSUIRIndividualPlanBundle]]
+

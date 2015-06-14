@@ -101,4 +101,11 @@ class Faculties
         $this->specialty = $specialty;
     }
 
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }

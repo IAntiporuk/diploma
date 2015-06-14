@@ -5,6 +5,9 @@ bsuir_individual_plan_homepage:
 professors_register:
     path:     /register
     defaults: { _controller: BSUIRIndividualPlanBundle:Professors:register }
+professors_edit:
+    path:     /professor/edit
+    defaults: { _controller: BSUIRIndividualPlanBundle:Professors:edit }
 professors_login:
     path:     /login
     defaults: { _controller: BSUIRIndividualPlanBundle:Security:login }

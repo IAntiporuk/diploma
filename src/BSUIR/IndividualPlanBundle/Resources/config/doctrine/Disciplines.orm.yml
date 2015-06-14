@@ -21,4 +21,6 @@ BSUIR\IndividualPlanBundle\Entity\Disciplines:
             length: 255
         createdAt:
             type: datetimetz
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+        prePersist: [ prePersist, preUpdate ]
+        preUpdate: [ preUpdate ]

@@ -101,5 +101,19 @@ class Disciplines
         $this->department = $department;
     }
 
+    /**
+     * LifecycleCallbacks
+     */
+    public function prePersist()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
+    /**
+     * LifecycleCallbacks
+     */
+    public function preUpdate()
+    {
+        $this->updatedAt = new \DateTime();
+    }
 }

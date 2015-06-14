@@ -27,4 +27,6 @@ BSUIR\IndividualPlanBundle\Entity\Specialty:
         name:
             type: string
             length: 255
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+        prePersist: [ prePersist, preUpdate ]
+        preUpdate: [ preUpdate ]

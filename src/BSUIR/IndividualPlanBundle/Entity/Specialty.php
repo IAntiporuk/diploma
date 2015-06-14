@@ -73,7 +73,7 @@ class Specialty
      * @param integer $faculty
      * @return Specialty
      */
-    public function setFacultyId($faculty)
+    public function setFaculty($faculty)
     {
         $this->faculty = $faculty;
 
@@ -104,6 +104,30 @@ class Specialty
     public function setGroups($groups)
     {
         $this->groups = $groups;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
+    /**
+     * LifecycleCallbacks
+     */
+    public function prePersist()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
+     * LifecycleCallbacks
+     */
+    public function preUpdate()
+    {
+        $this->updatedAt = new \DateTime();
     }
 
 }
