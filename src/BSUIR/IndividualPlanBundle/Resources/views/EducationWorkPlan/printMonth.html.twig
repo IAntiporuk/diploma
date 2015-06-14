@@ -49,7 +49,11 @@
                                 <td>{{ val|number_format(1) }}</td>
                             {% endif %}
                         {% endfor %}
-                        <td>{{ sum }}</td>
+                        {% if sum % monthsCount != 0 %}
+                            <td>{{ sum }}</td>
+                        {% else %}
+                            <td>{{ sum|number_format(1) }}</td>
+                        {% endif %}
                         <td></td>
                         <td>{{ item.note }}</td>
                     </tr>
